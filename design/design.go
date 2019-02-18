@@ -20,12 +20,13 @@ var ClusterForBranching = MediaType("application/vnd.clusterForBranching+json", 
 		Attribute("name", String, "Cluster name")
 		Attribute("servers", ArrayOf(String, func() {
 			Format("hostname")
-			Example("db-mysql-my-cluster0a.42.wixprod.net")
-			Example("db-mysql-my-cluster1b.42.wixprod.net")
-			Example("db-mysql-my-cluster0a.96.wixprod.net")
-			Example("db-mysql-my-cluster1b.96.wixprod.net")
-			Example("db-mysql-my-cluster0a.42.wixprod.net")
-		}), "List of server in cluster")
+		}), "List of server in cluster", func() {
+			Example([5]string{"db-mysql-my-cluster0a.42.wixprod.net",
+				"db-mysql-my-cluster1b.42.wixprod.net",
+				"db-mysql-my-cluster0a.96.wixprod.net",
+				"db-mysql-my-cluster1b.96.wixprod.net",
+				"db-mysql-my-cluster0a.42.wixprod.net"})
+		})
 		Attribute("master_hostname", String, "The current RW master of the cluster", func() {
 			Format("hostname")
 			Example("db-mysql-my-cluster0a.42.wixprod.net")
