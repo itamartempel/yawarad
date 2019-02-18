@@ -34,6 +34,24 @@ var ClusterForBranching = MediaType("application/vnd.clusterForBranching+json", 
 			Format("hostname")
 			Example("db-mysql-my-cluster0a.42.wixprod.net")
 		})
+		View("default", func() {
+			Attribute("id")
+			Attribute("name")
+			Attribute("servers")
+			Attribute("master_hostname")
+			Attribute("backup_hostname")
+		})
 
+	})
+})
+
+var _ = Resource("cluster-for-branching", func() {
+	BasePath("/v1/cluster-for-branching")
+	Action("list", func() {
+		Routing(
+			GET(""),
+		)
+		Description("Retrieve all Available cluster for branching.")
+		Response(OK, CollectionOf(ClusterForBranching))
 	})
 })
