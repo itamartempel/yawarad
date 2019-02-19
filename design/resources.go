@@ -39,5 +39,16 @@ var _ = Resource("cluster-branching", func() {
 		Description("Retrieve all Available cluster that can be branch.")
 		Response(OK, CollectionOf(ClusterForBranching))
 	})
+	Action("show-cluster", func() {
+		Routing(
+			GET("/clusters/:cluster_name"),
+		)
+		Params(func() {
+			Param("cluster_name", String)
+		})
+		Description("Retrieve single cluster to be branch by name.")
+		Response(OK, ClusterForBranching, "less")
+		Response(NotFound)
+	})
 
 })
