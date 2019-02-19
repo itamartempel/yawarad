@@ -32,12 +32,12 @@ var _ = Resource("cluster-branching", func() {
 			GET("/clusters"),
 		)
 		Params(func() {
-			Param("cluster_type")
+			Param("cluster_type", func() {
+				Enum(getAvailableClusterType()...)
+			})
 		})
 		Description("Retrieve all Available cluster that can be branch.")
 		Response(OK, CollectionOf(ClusterForBranching))
 	})
-	Action("show-cluster", func() {
 
-	})
 })
