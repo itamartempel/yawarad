@@ -37,7 +37,7 @@ func getBranchTypes() []interface{} {
 
 }
 func getBranchStatus() []interface{} {
-	var branchStatus = []string{"active", "grace", "expired", "deleted"}
+	var branchStatus = []string{"creating", "active", "grace", "expired", "deleted"}
 
 	result := make([]interface{}, len(branchStatus))
 	for i, v := range branchStatus {

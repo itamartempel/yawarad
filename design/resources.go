@@ -93,7 +93,7 @@ var _ = Resource("cluster-branching", func() {
 			Param("skip", Integer, "For pagenation, skip results by giving value")
 
 		})
-		Description("Retrive snapshots of a specific cluster")
+		Description("Retrive branches of a specific cluster")
 		Response(OK, CollectionOf(ClusterBranch))
 		Response(NotFound, func() {
 			Description("If cluster name does not exists")
@@ -101,11 +101,132 @@ var _ = Resource("cluster-branching", func() {
 
 	})
 	// GET - api/v1/cluster-branching/snapshots?&limit&skip&cluster&from_time&to_time
-	// GET - api/v1/cluster-branching/snapshots/{:snapshots_name}
-	// GET - api/v1/cluster-branching/snapshots/{:snapshots_name}/branches
+	Action("list-snapshots", func() {
+		Routing(
+			GET("/snapshots"),
+		)
+		Params(func() {
+			Param("cluster_name", String, "Filter by cluster name (contains)")
+			Param("from_time", Integer, "Filter cluster snapshot by retriving all snapshot that was created after the giving value (Epoch time in milliseconds)", func() {
+				Example(1550657633000)
+			})
+			Param("to_time", Integer, "Filter cluster snapshot by retriving all snapshot that was created before the giving value (Epoch time in milliseconds)", func() {
+				Example(1547979233000)
+			})
+			Param("limit", Integer, fmt.Sprintf("limit the result set by giving value (default is %d)", DefaultResultLimit), func() {
+				Maximum(DefaultResultLimit)
+				Default(DefaultResultLimit)
+			})
+			Param("skip", Integer, "For pagenation, skip results by giving value")
+		})
+		Description("Retrive snapshots")
+		Response(OK, CollectionOf(ClusterSnapshot))
+
+	})
+	// GET - api/v1/cluster-branching/snapshots/{:snapshot_id}
+	Action("show-snapshot", func() {
+		Routing(
+			GET("/snapshots/:snapshot_id"),
+		)
+		Params(func() {
+			Param("snapshot_id", String, "The snapshot id to show")
+		})
+		Description("Retrieve single cluster snapshot by id.")
+		Response(OK, ClusterForBranching)
+		Response(NotFound, func() {
+			Description("If snapshot id does not exists")
+		})
+	})
+	// GET - api/v1/cluster-branching/snapshots/{:snapshot_id}/branches
+	Action("list-snapshot-branches", func() {
+		Routing(
+			GET("/clusters/:snapshot_id/branches"),
+		)
+		Params(func() {
+			Param("snapshot_id", String, "The snapshot id to show")
+			Param("from_time", Integer, "Filter cluster branch by retriving all branch that was created after the giving value (Epoch time in milliseconds)", func() {
+				Example(1550657633000)
+			})
+			Param("to_time", Integer, "Filter cluster branch by retriving all branch that was created before the giving value (Epoch time in milliseconds)", func() {
+				Example(1547979233000)
+			})
+			Param("status", String, "Filter branches by branch status", func() {
+				Enum(getBranchStatus()...)
+			})
+			Param("team", String, "Filter branches by team name (contains)")
+			Param("requestor", String, "Filter branches by username of the reuqstor(contains)")
+			Param("type", String, "Filter branches by branch type", func() {
+				Enum(getBranchTypes()...)
+			})
+			Param("limit", Integer, fmt.Sprintf("limit the result set by giving value (default is %d )", DefaultResultLimit), func() {
+				Maximum(DefaultResultLimit)
+				Default(DefaultResultLimit)
+			})
+			Param("skip", Integer, "For pagenation, skip results by giving value")
+
+		})
+		Description("Retrive branches that was created from a specific snapshot")
+		Response(OK, CollectionOf(ClusterBranch))
+		Response(NotFound, func() {
+			Description("If snapshot id does not exists")
+		})
+
+	})
 	// GET - api/v1/cluster-branching/branches?&limit&skip&status&cluster&user&team
-	// POST - api/v1/cluster-branching/branches # create new request to create a new branche
+	Action("list-branches", func() {
+		Routing(
+			GET("/branches"),
+		)
+		Params(func() {
+			Param("cluster_name", String, "Filter branch by cluster name (contains)")
+			Param("from_time", Integer, "Filter cluster branch by retriving all branch that was created after the giving value (Epoch time in milliseconds)", func() {
+				Example(1550657633000)
+			})
+			Param("to_time", Integer, "Filter cluster branch by retriving all branch that was created before the giving value (Epoch time in milliseconds)", func() {
+				Example(1547979233000)
+			})
+			Param("status", String, "Filter branches by branch status", func() {
+				Enum(getBranchStatus()...)
+			})
+			Param("team", String, "Filter branches by team name (contains)")
+			Param("requestor", String, "Filter branches by username of the reuqstor(contains)")
+			Param("type", String, "Filter branches by branch type", func() {
+				Enum(getBranchTypes()...)
+			})
+			Param("limit", Integer, fmt.Sprintf("limit the result set by giving value (default is %d )", DefaultResultLimit), func() {
+				Maximum(DefaultResultLimit)
+				Default(DefaultResultLimit)
+			})
+			Param("skip", Integer, "For pagenation, skip results by giving value")
+
+		})
+		Description("Retrive branches")
+		Response(OK, CollectionOf(ClusterBranch))
+
+	})
 	// GET - api/v1/cluster-branching/branches/{:branch_id}
+	Action("show-branche", func() {
+		Routing(
+			GET("/branches/:branch_id"),
+		)
+		Params(func() {
+			Param("branch_id", String, "The branch id to show")
+		})
+		Description("Retrieve single cluster branch by id.")
+		Response(OK, ClusterForBranching)
+		Response(NotFound, func() {
+			Description("If branch id does not exists")
+		})
+	})
+	// POST - api/v1/cluster-branching/branches # create new request to create a new branche
+	Action("create-branch", func() {
+		Routing(
+			POST("/branches"),
+		)
+		Description("Create a new branch")
+		Payload(CreateBranchPayload)
+		Response(Created, ClusterBranch)
+	})
 	// PUT - api/v1/cluster-branching/branches/{:branch_id}  # create new request to update the branche
 	// GET - api/v1/cluster-branching/request?status&cluster&branch&from_date&to_date&limit&skip
 	// GET - api/v1/cluster-branching/request/{:request_id}
