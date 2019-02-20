@@ -140,7 +140,7 @@ var _ = Resource("cluster-branching", func() {
 	// GET - api/v1/cluster-branching/snapshots/{:snapshot_id}/branches
 	Action("list-snapshot-branches", func() {
 		Routing(
-			GET("/clusters/:snapshot_id/branches"),
+			GET("/snapshots/:snapshot_id/branches"),
 		)
 		Params(func() {
 			Param("snapshot_id", String, "The snapshot id to show")
