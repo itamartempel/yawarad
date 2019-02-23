@@ -225,12 +225,79 @@ var _ = Resource("cluster-branching", func() {
 		)
 		Description("Create a new branch")
 		Payload(CreateBranchPayload)
-		Response(Created, ClusterBranch)
+		Response(Created, BranchRequest)
+		Response(BadRequest)
+		Response(UnprocessableEntity)
+
 	})
 	// PUT - api/v1/cluster-branching/branches/{:branch_id}  # create new request to update the branche
+	Action("update-branch", func() {
+		Routing(
+			PUT("/branches"),
+		)
+		Description("Create a new branch")
+		Payload(UpdateBranchPayload)
+		Response(Accepted, BranchRequest)
+		Response(BadRequest)
+		Response(UnprocessableEntity)
+
+	})
 	// GET - api/v1/cluster-branching/request?status&cluster&branch&from_date&to_date&limit&skip
+	Action("list-requests", func() {
+		Routing(
+			GET("/requests"),
+		)
+		Params(func() {
+			Param("cluster_name", String, "Filter request by cluster name (contains)")
+			Param("from_time", Integer, "Filter requests that was created after the giving value (Epoch time in milliseconds)", func() {
+				Example(1550657633000)
+			})
+			Param("to_time", Integer, "Filter request that was created before the giving value (Epoch time in milliseconds)", func() {
+				Example(1547979233000)
+			})
+			Param("state", String, "Filter requests by request state", func() {
+				Enum(getRequestStates()...)
+			})
+			Param("requestor", String, "Filter branches by username of the reuqstor(contains)")
+			Param("type", String, "Filter request by request type", func() {
+				Enum(getRequestType()...)
+			})
+			Param("limit", Integer, fmt.Sprintf("limit the result set by giving value (default is %d )", DefaultResultLimit), func() {
+				Maximum(DefaultResultLimit)
+				Default(DefaultResultLimit)
+			})
+			Param("skip", Integer, "For pagenation, skip results by giving value")
+
+		})
+		Description("Retrive branches")
+		Response(OK, CollectionOf(BranchRequest))
+	})
 	// GET - api/v1/cluster-branching/request/{:request_id}
+	Action("show-request", func() {
+		Routing(
+			GET("/requests/:request_id"),
+		)
+		Params(func() {
+			Param("request_id", String, "The request id to show")
+		})
+		Description("Retrieve single request by id.")
+		Response(OK, BranchRequest)
+		Response(NotFound, func() {
+			Description("If request id does not exists")
+		})
+	})
 	// WS - api/v1/cluster-branching/request/{:request_id}
+	Action("subscribe-request-changes", func() {
+		Routing(
+			GET("/requests/:request_id/ws"),
+		)
+		Scheme("ws")
+		Params(func() {
+			Param("request_id", String, "The request id to show")
+		})
+		Description("Subscribe to any changes that will happend to a single request by websocket")
+		Response(SwitchingProtocols)
+	})
 	// GET - api/v1/cluster-branching/request/{:request_id}/steps
 	// GET - api/v1/cluster-branching/request/{:request_id}/steps/{step_name}
 	// GET - api/v1/cluster-branching/request/{:request_id}/steps/{step_name}/log

@@ -7,7 +7,9 @@ import (
 
 var CreateBranchPayload = Type("CreateBranchPayload", func() {
 	Description("CreateBranchPayload defind a new branch request")
-	Attribute("snapshot_id", String, "Snapshot image id that this branch will create from")
+	Attribute("snapshot_id", String, "Snapshot image id that this branch will create from", func() {
+		Example("Image_4946347")
+	})
 	Attribute("team", String, "The Team that this branch will create for", func() {
 		Example("Booking")
 	})
@@ -24,5 +26,14 @@ var CreateBranchPayload = Type("CreateBranchPayload", func() {
 	Attribute("type", String, "The type of this branch", func() {
 		Enum(getBranchTypes()...)
 	})
-	Required("snapshot", "team", "cluster_name", "requestor", "cluster_name", "type")
+	Required("snapshot_id", "team", "cluster_name", "requestor", "cluster_name", "type")
+})
+
+var UpdateBranchPayload = Type("UpdateBranchPayload", func() {
+	Description("UpdateBranchPayload defind an update request on existing branch")
+	Attribute("operation", String, "The operation to be done on the existing branch", func() {
+		Enum(getBranchUpdateOperations()...)
+	})
+	Attribute("comment", String, "Comment of this operation")
+	Required("operation")
 })

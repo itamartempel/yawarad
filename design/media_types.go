@@ -77,25 +77,6 @@ var ClusterSnapshot = MediaType("application/vnd.cluster-snapshot+json", func() 
 	})
 })
 
-var BranchRequest = MediaType("application/vnd.branch-request+json", func() {
-	Description("A request")
-	Attributes(func() {
-		Attribute("id", UUID, "Request Id")
-		Attribute("requestor", String, "The user that request the branch", func() {
-			Format("email")
-			Example("iisraelly@wix.com")
-		})
-		Attribute("jira_ticket", String, "The Jira ticket that related to this request", func() {
-			Example("DBS-38329")
-		})
-	})
-	View("default", func() {
-		Attribute("id")
-		Attribute("requestor")
-		Attribute("jira_ticket")
-	})
-})
-
 var ClusterBranch = MediaType("application/vnd.cluster-branch+json", func() {
 	Description("A single cluster branch")
 	Attributes(func() {
@@ -104,8 +85,6 @@ var ClusterBranch = MediaType("application/vnd.cluster-branch+json", func() {
 		Attribute("team", String, "The Team that this branch was created for", func() {
 			Example("Booking")
 		})
-		Attribute("request", BranchRequest, "The request that created this burch")
-
 		Attribute("cluster_name", String, "Cluster name that the branch was created from", func() {
 			Example("my_cluster")
 		})
@@ -124,12 +103,74 @@ var ClusterBranch = MediaType("application/vnd.cluster-branch+json", func() {
 		Attribute("id")
 		Attribute("snapshot")
 		Attribute("team")
-		Attribute("request")
 		Attribute("cluster_name")
 		Attribute("created_at")
 		Attribute("expire_at")
 		Attribute("rollforword_till")
 		Attribute("type")
 		Attribute("status")
+	})
+})
+
+var BranchRequestTask = MediaType("application/vnd.branch-request-task+json", func() {
+	Description("A sigle task of operation")
+	Attributes(func() {
+		Attribute("id", UUID, "Request task Id")
+		Attribute("seq", Integer, "The sequence order position of this specific task")
+		Attribute("progress", Integer, "The progress of this task in presentage", func() {
+			Default(0)
+			Minimum(0)
+			Maximum(100)
+		})
+		Attribute("last_log_message", String, "The last log messages")
+		Attribute("name", String, "The task name")
+		Attribute("description", String, "The description of the task")
+		Attribute("start_at", DateTime, "The time that the task was started")
+		Attribute("end_at", DateTime, "The time that the task was ended")
+		Attribute("state", String, "The state of the current task", func() {
+			Enum("pendding", "running", "finish_successfully", "failed")
+			Default("pendding")
+		})
+	})
+	View("default", func() {
+		Attribute("id")
+		Attribute("seq")
+		Attribute("progress")
+		Attribute("last_log_message")
+		Attribute("name")
+		Attribute("description")
+		Attribute("start_at")
+		Attribute("end_at")
+		Attribute("state")
+	})
+})
+
+var BranchRequest = MediaType("application/vnd.branch-request+json", func() {
+	Description("A request")
+	Attributes(func() {
+		Attribute("request_id", UUID, "Request Id")
+		Attribute("requestor", String, "The user that request the branch", func() {
+			Format("email")
+			Example("iisraelly@wix.com")
+		})
+		Attribute("jira_ticket", String, "The Jira ticket that related to this request", func() {
+			Example("DBS-38329")
+		})
+		Attribute("branch_id", UUID, "Branch id")
+		Attribute("request_type", String, "The request type", func() {
+			Enum(getRequestType()...)
+		})
+		Attribute("tasks", ArrayOf(BranchRequestTask))
+		Attribute("state", String, "The state of the request", func() {
+			Enum(getRequestStates()...)
+		})
+	})
+	View("default", func() {
+		Attribute("request_id")
+		Attribute("requestor")
+		Attribute("jira_ticket")
+		Attribute("branch_id")
+		Attribute("request_type")
+		Attribute("tasks")
 	})
 })
