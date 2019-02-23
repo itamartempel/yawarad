@@ -269,7 +269,7 @@ var _ = Resource("cluster-branching", func() {
 			Param("skip", Integer, "For pagenation, skip results by giving value")
 
 		})
-		Description("Retrive branches")
+		Description("Retrive requests")
 		Response(OK, CollectionOf(BranchRequest))
 	})
 	// GET - api/v1/cluster-branching/request/{:request_id}
@@ -298,9 +298,53 @@ var _ = Resource("cluster-branching", func() {
 		Description("Subscribe to any changes that will happend to a single request by websocket")
 		Response(SwitchingProtocols)
 	})
-	// GET - api/v1/cluster-branching/request/{:request_id}/steps
-	// GET - api/v1/cluster-branching/request/{:request_id}/steps/{step_name}
-	// GET - api/v1/cluster-branching/request/{:request_id}/steps/{step_name}/log
-	// WS - api/v1/cluster-branching/request/{:request_id}/steps/{step_name}/log
+	// GET - api/v1/cluster-branching/request/{:request_id}/tasks
+	Action("list-request-tasks", func() {
+		Routing(
+			GET("/requests/:request_id/tasks"),
+		)
+		Params(func() {
+			Param("request_id", String, "The request id to show")
+		})
+		Description("Retrive request tasks")
+		Response(OK, CollectionOf(BranchRequestTask))
+	})
+	// GET - api/v1/cluster-branching/request/{:request_id}/tasks/{task_name}
+	Action("show-request-task", func() {
+		Routing(
+			GET("/requests/:request_id/tasks/:task_name"),
+		)
+		Params(func() {
+			Param("request_id", String, "The request id to show")
+			Param("task_name", String, "The request task name to show")
+		})
+		Description("Retrive a single request task by name")
+		Response(OK, BranchRequestTask)
+	})
+	// GET - api/v1/cluster-branching/request/{:request_id}/tasks/{task_name}/log
+	Action("show-request-task-log", func() {
+		Routing(
+			GET("/requests/:request_id/tasks/:task_name/log"),
+		)
+		Params(func() {
+			Param("request_id", String, "The request id to show")
+			Param("task_name", String, "The request task name to show")
+		})
+		Description("Retrive a single request task by id")
+		Response(OK, BranchRequestTask)
+	})
+	// WS - api/v1/cluster-branching/request/{:request_id}/tasks/{task_name}/log
+	Action("subscribe-request-task-log-stream", func() {
+		Routing(
+			GET("/requests/:request_id/tasks/:task_name/log/ws"),
+		)
+		Params(func() {
+			Param("request_id", String, "The request id to show")
+			Param("task_name", String, "The request task name to show")
+		})
+		Scheme("ws")
+		Description("Retrive a single request task by id")
+		Response(SwitchingProtocols)
+	})
 
 })
