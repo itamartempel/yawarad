@@ -20,9 +20,17 @@ var _ = Resource("cluster-branching", func() {
 			Param("cluster_type", func() {
 				Enum(getAvailableClusterTypeForBranching()...)
 			})
+			Param("cluster_name", String, "Filter by cluster name (contains)", func() {
+				Example("html_editor")
+			})
+			Param("limit", Integer, fmt.Sprintf("limit the result set by giving value (default is %d)", DefaultResultLimit), func() {
+				Maximum(DefaultResultLimit)
+				Default(DefaultResultLimit)
+			})
+			Param("skip", Integer, "For pagenation, skip results by giving value")
 		})
 		Description("Retrieve all Available cluster that can be branch.")
-		Response(OK, CollectionOf(ClusterForBranching))
+		Response(OK, CountableCollectionOfClusterForBranching)
 	})
 	// GET - api/v1/cluster-branching/clusters/{:cluster_name}
 	Action("show-cluster", func() {
@@ -30,7 +38,9 @@ var _ = Resource("cluster-branching", func() {
 			GET("/clusters/:cluster_name"),
 		)
 		Params(func() {
-			Param("cluster_name", String, "The cluster name to show")
+			Param("cluster_name", String, "The cluster name to show", func() {
+				Example("html_editor")
+			})
 		})
 		Description("Retrieve single cluster to be branch by name.")
 		Response(OK, ClusterForBranching)
@@ -44,7 +54,9 @@ var _ = Resource("cluster-branching", func() {
 			GET("/clusters/:cluster_name/snapshots"),
 		)
 		Params(func() {
-			Param("cluster_name", String, "The cluster name to show")
+			Param("cluster_name", String, "The cluster name to show", func() {
+				Example("html_editor")
+			})
 			Param("from_time", Integer, "Filter cluster snapshot by retriving all snapshot that was created after the giving value (Epoch time in milliseconds)", func() {
 				Example(1550657633000)
 			})
@@ -58,7 +70,7 @@ var _ = Resource("cluster-branching", func() {
 			Param("skip", Integer, "For pagenation, skip results by giving value")
 		})
 		Description("Retrive snapshots of a specific cluster")
-		Response(OK, CollectionOf(ClusterSnapshot))
+		Response(OK, CountableCollectionOfClusterSnapshots)
 		Response(NotFound, func() {
 			Description("If cluster name does not exists")
 		})
@@ -71,7 +83,9 @@ var _ = Resource("cluster-branching", func() {
 			GET("/clusters/:cluster_name/branches"),
 		)
 		Params(func() {
-			Param("cluster_name", String, "The cluster name to show")
+			Param("cluster_name", String, "The cluster name to show", func() {
+				Example("html_editor")
+			})
 			Param("from_time", Integer, "Filter cluster branch by retriving all branch that was created after the giving value (Epoch time in milliseconds)", func() {
 				Example(1550657633000)
 			})
@@ -94,7 +108,7 @@ var _ = Resource("cluster-branching", func() {
 
 		})
 		Description("Retrive branches of a specific cluster")
-		Response(OK, CollectionOf(ClusterBranch))
+		Response(OK, CountableCollectionOfClusterBranches)
 		Response(NotFound, func() {
 			Description("If cluster name does not exists")
 		})
@@ -106,7 +120,9 @@ var _ = Resource("cluster-branching", func() {
 			GET("/snapshots"),
 		)
 		Params(func() {
-			Param("cluster_name", String, "Filter by cluster name (contains)")
+			Param("cluster_name", String, "Filter by cluster name (contains)", func() {
+				Example("html_editor")
+			})
 			Param("from_time", Integer, "Filter cluster snapshot by retriving all snapshot that was created after the giving value (Epoch time in milliseconds)", func() {
 				Example(1550657633000)
 			})
@@ -120,7 +136,7 @@ var _ = Resource("cluster-branching", func() {
 			Param("skip", Integer, "For pagenation, skip results by giving value")
 		})
 		Description("Retrive snapshots")
-		Response(OK, CollectionOf(ClusterSnapshot))
+		Response(OK, CountableCollectionOfClusterSnapshots)
 
 	})
 	// GET - api/v1/cluster-branching/snapshots/{:snapshot_id}
@@ -166,7 +182,7 @@ var _ = Resource("cluster-branching", func() {
 
 		})
 		Description("Retrive branches that was created from a specific snapshot")
-		Response(OK, CollectionOf(ClusterBranch))
+		Response(OK, CountableCollectionOfClusterBranches)
 		Response(NotFound, func() {
 			Description("If snapshot id does not exists")
 		})
@@ -178,7 +194,9 @@ var _ = Resource("cluster-branching", func() {
 			GET("/branches"),
 		)
 		Params(func() {
-			Param("cluster_name", String, "Filter branch by cluster name (contains)")
+			Param("cluster_name", String, "Filter branch by cluster name (contains)", func() {
+				Example("html_editor")
+			})
 			Param("from_time", Integer, "Filter cluster branch by retriving all branch that was created after the giving value (Epoch time in milliseconds)", func() {
 				Example(1550657633000)
 			})
@@ -201,7 +219,7 @@ var _ = Resource("cluster-branching", func() {
 
 		})
 		Description("Retrive branches")
-		Response(OK, CollectionOf(ClusterBranch))
+		Response(OK, CountableCollectionOfClusterBranches)
 
 	})
 	// GET - api/v1/cluster-branching/branches/{:branch_id}
@@ -248,7 +266,9 @@ var _ = Resource("cluster-branching", func() {
 			GET("/requests"),
 		)
 		Params(func() {
-			Param("cluster_name", String, "Filter request by cluster name (contains)")
+			Param("cluster_name", String, "Filter request by cluster name (contains)", func() {
+				Example("html_editor")
+			})
 			Param("from_time", Integer, "Filter requests that was created after the giving value (Epoch time in milliseconds)", func() {
 				Example(1550657633000)
 			})
@@ -270,7 +290,7 @@ var _ = Resource("cluster-branching", func() {
 
 		})
 		Description("Retrive requests")
-		Response(OK, CollectionOf(BranchRequest))
+		Response(OK, CountableCollectionOfRequests)
 	})
 	// GET - api/v1/cluster-branching/request/{:request_id}
 	Action("show-request", func() {

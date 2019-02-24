@@ -1,7 +1,7 @@
 package design
 
 const (
-	DefaultResultLimit int = 1000
+	DefaultResultLimit int = 100
 )
 
 func getAvailableClusterTypeForBranching() []interface{} {

@@ -33,7 +33,7 @@ func (c *ClusterBranchingController) ListBranches(ctx *app.ListBranchesClusterBr
 
 	// Put your logic here
 
-	res := app.ClusterBranchCollection{}
+	res := &app.CountableCollectionClusterBranches{}
 	return ctx.OK(res)
 	// ClusterBranchingController_ListBranches: end_implement
 }
@@ -44,7 +44,7 @@ func (c *ClusterBranchingController) ListClusterBranches(ctx *app.ListClusterBra
 
 	// Put your logic here
 
-	res := app.ClusterBranchCollection{}
+	res := &app.CountableCollectionClusterBranches{}
 	return ctx.OK(res)
 	// ClusterBranchingController_ListClusterBranches: end_implement
 }
@@ -55,7 +55,7 @@ func (c *ClusterBranchingController) ListClusterSnapshots(ctx *app.ListClusterSn
 
 	// Put your logic here
 
-	res := app.ClusterSnapshotCollection{}
+	res := &app.CountableCollectionClusterSnapshots{}
 	return ctx.OK(res)
 	// ClusterBranchingController_ListClusterSnapshots: end_implement
 }
@@ -66,7 +66,7 @@ func (c *ClusterBranchingController) ListClusters(ctx *app.ListClustersClusterBr
 
 	// Put your logic here
 
-	res := app.ClusterForBranchingCollection{}
+	res := &app.CountableCollectionClusterForBranching{}
 	return ctx.OK(res)
 	// ClusterBranchingController_ListClusters: end_implement
 }
@@ -88,7 +88,7 @@ func (c *ClusterBranchingController) ListRequests(ctx *app.ListRequestsClusterBr
 
 	// Put your logic here
 
-	res := app.BranchRequestCollection{}
+	res := &app.CountableCollectionRequests{}
 	return ctx.OK(res)
 	// ClusterBranchingController_ListRequests: end_implement
 }
@@ -99,7 +99,7 @@ func (c *ClusterBranchingController) ListSnapshotBranches(ctx *app.ListSnapshotB
 
 	// Put your logic here
 
-	res := app.ClusterBranchCollection{}
+	res := &app.CountableCollectionClusterBranches{}
 	return ctx.OK(res)
 	// ClusterBranchingController_ListSnapshotBranches: end_implement
 }
@@ -110,7 +110,7 @@ func (c *ClusterBranchingController) ListSnapshots(ctx *app.ListSnapshotsCluster
 
 	// Put your logic here
 
-	res := app.ClusterSnapshotCollection{}
+	res := &app.CountableCollectionClusterSnapshots{}
 	return ctx.OK(res)
 	// ClusterBranchingController_ListSnapshots: end_implement
 }

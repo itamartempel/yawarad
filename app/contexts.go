@@ -100,7 +100,7 @@ func NewListBranchesClusterBranchingContext(ctx context.Context, r *http.Request
 	}
 	paramLimit := req.Params["limit"]
 	if len(paramLimit) == 0 {
-		rctx.Limit = 1000
+		rctx.Limit = 100
 	} else {
 		rawLimit := paramLimit[0]
 		if limit, err2 := strconv.Atoi(rawLimit); err2 == nil {
@@ -108,8 +108,8 @@ func NewListBranchesClusterBranchingContext(ctx context.Context, r *http.Request
 		} else {
 			err = goa.MergeErrors(err, goa.InvalidParamTypeError("limit", rawLimit, "integer"))
 		}
-		if rctx.Limit > 1000 {
-			err = goa.MergeErrors(err, goa.InvalidRangeError(`limit`, rctx.Limit, 1000, false))
+		if rctx.Limit > 100 {
+			err = goa.MergeErrors(err, goa.InvalidRangeError(`limit`, rctx.Limit, 100, false))
 		}
 	}
 	paramRequestor := req.Params["requestor"]
@@ -168,12 +168,9 @@ func NewListBranchesClusterBranchingContext(ctx context.Context, r *http.Request
 }
 
 // OK sends a HTTP response with status code 200.
-func (ctx *ListBranchesClusterBranchingContext) OK(r ClusterBranchCollection) error {
+func (ctx *ListBranchesClusterBranchingContext) OK(r *CountableCollectionClusterBranches) error {
 	if ctx.ResponseData.Header().Get("Content-Type") == "" {
-		ctx.ResponseData.Header().Set("Content-Type", "application/vnd.cluster-branch+json; type=collection")
-	}
-	if r == nil {
-		r = ClusterBranchCollection{}
+		ctx.ResponseData.Header().Set("Content-Type", "application/vnd.countable-collection-cluster-branches+json")
 	}
 	return ctx.ResponseData.Service.Send(ctx.Context, 200, r)
 }
@@ -221,7 +218,7 @@ func NewListClusterBranchesClusterBranchingContext(ctx context.Context, r *http.
 	}
 	paramLimit := req.Params["limit"]
 	if len(paramLimit) == 0 {
-		rctx.Limit = 1000
+		rctx.Limit = 100
 	} else {
 		rawLimit := paramLimit[0]
 		if limit, err2 := strconv.Atoi(rawLimit); err2 == nil {
@@ -229,8 +226,8 @@ func NewListClusterBranchesClusterBranchingContext(ctx context.Context, r *http.
 		} else {
 			err = goa.MergeErrors(err, goa.InvalidParamTypeError("limit", rawLimit, "integer"))
 		}
-		if rctx.Limit > 1000 {
-			err = goa.MergeErrors(err, goa.InvalidRangeError(`limit`, rctx.Limit, 1000, false))
+		if rctx.Limit > 100 {
+			err = goa.MergeErrors(err, goa.InvalidRangeError(`limit`, rctx.Limit, 100, false))
 		}
 	}
 	paramRequestor := req.Params["requestor"]
@@ -289,12 +286,9 @@ func NewListClusterBranchesClusterBranchingContext(ctx context.Context, r *http.
 }
 
 // OK sends a HTTP response with status code 200.
-func (ctx *ListClusterBranchesClusterBranchingContext) OK(r ClusterBranchCollection) error {
+func (ctx *ListClusterBranchesClusterBranchingContext) OK(r *CountableCollectionClusterBranches) error {
 	if ctx.ResponseData.Header().Get("Content-Type") == "" {
-		ctx.ResponseData.Header().Set("Content-Type", "application/vnd.cluster-branch+json; type=collection")
-	}
-	if r == nil {
-		r = ClusterBranchCollection{}
+		ctx.ResponseData.Header().Set("Content-Type", "application/vnd.countable-collection-cluster-branches+json")
 	}
 	return ctx.ResponseData.Service.Send(ctx.Context, 200, r)
 }
@@ -344,7 +338,7 @@ func NewListClusterSnapshotsClusterBranchingContext(ctx context.Context, r *http
 	}
 	paramLimit := req.Params["limit"]
 	if len(paramLimit) == 0 {
-		rctx.Limit = 1000
+		rctx.Limit = 100
 	} else {
 		rawLimit := paramLimit[0]
 		if limit, err2 := strconv.Atoi(rawLimit); err2 == nil {
@@ -352,8 +346,8 @@ func NewListClusterSnapshotsClusterBranchingContext(ctx context.Context, r *http
 		} else {
 			err = goa.MergeErrors(err, goa.InvalidParamTypeError("limit", rawLimit, "integer"))
 		}
-		if rctx.Limit > 1000 {
-			err = goa.MergeErrors(err, goa.InvalidRangeError(`limit`, rctx.Limit, 1000, false))
+		if rctx.Limit > 100 {
+			err = goa.MergeErrors(err, goa.InvalidRangeError(`limit`, rctx.Limit, 100, false))
 		}
 	}
 	paramSkip := req.Params["skip"]
@@ -382,12 +376,9 @@ func NewListClusterSnapshotsClusterBranchingContext(ctx context.Context, r *http
 }
 
 // OK sends a HTTP response with status code 200.
-func (ctx *ListClusterSnapshotsClusterBranchingContext) OK(r ClusterSnapshotCollection) error {
+func (ctx *ListClusterSnapshotsClusterBranchingContext) OK(r *CountableCollectionClusterSnapshots) error {
 	if ctx.ResponseData.Header().Get("Content-Type") == "" {
-		ctx.ResponseData.Header().Set("Content-Type", "application/vnd.cluster-snapshot+json; type=collection")
-	}
-	if r == nil {
-		r = ClusterSnapshotCollection{}
+		ctx.ResponseData.Header().Set("Content-Type", "application/vnd.countable-collection-cluster-snapshots+json")
 	}
 	return ctx.ResponseData.Service.Send(ctx.Context, 200, r)
 }
@@ -403,7 +394,10 @@ type ListClustersClusterBranchingContext struct {
 	context.Context
 	*goa.ResponseData
 	*goa.RequestData
+	ClusterName *string
 	ClusterType *string
+	Limit       int
+	Skip        *int
 }
 
 // NewListClustersClusterBranchingContext parses the incoming request URL and body, performs validations and creates the
@@ -415,6 +409,11 @@ func NewListClustersClusterBranchingContext(ctx context.Context, r *http.Request
 	req := goa.ContextRequest(ctx)
 	req.Request = r
 	rctx := ListClustersClusterBranchingContext{Context: ctx, ResponseData: resp, RequestData: req}
+	paramClusterName := req.Params["cluster_name"]
+	if len(paramClusterName) > 0 {
+		rawClusterName := paramClusterName[0]
+		rctx.ClusterName = &rawClusterName
+	}
 	paramClusterType := req.Params["cluster_type"]
 	if len(paramClusterType) > 0 {
 		rawClusterType := paramClusterType[0]
@@ -425,16 +424,38 @@ func NewListClustersClusterBranchingContext(ctx context.Context, r *http.Request
 			}
 		}
 	}
+	paramLimit := req.Params["limit"]
+	if len(paramLimit) == 0 {
+		rctx.Limit = 100
+	} else {
+		rawLimit := paramLimit[0]
+		if limit, err2 := strconv.Atoi(rawLimit); err2 == nil {
+			rctx.Limit = limit
+		} else {
+			err = goa.MergeErrors(err, goa.InvalidParamTypeError("limit", rawLimit, "integer"))
+		}
+		if rctx.Limit > 100 {
+			err = goa.MergeErrors(err, goa.InvalidRangeError(`limit`, rctx.Limit, 100, false))
+		}
+	}
+	paramSkip := req.Params["skip"]
+	if len(paramSkip) > 0 {
+		rawSkip := paramSkip[0]
+		if skip, err2 := strconv.Atoi(rawSkip); err2 == nil {
+			tmp24 := skip
+			tmp23 := &tmp24
+			rctx.Skip = tmp23
+		} else {
+			err = goa.MergeErrors(err, goa.InvalidParamTypeError("skip", rawSkip, "integer"))
+		}
+	}
 	return &rctx, err
 }
 
 // OK sends a HTTP response with status code 200.
-func (ctx *ListClustersClusterBranchingContext) OK(r ClusterForBranchingCollection) error {
+func (ctx *ListClustersClusterBranchingContext) OK(r *CountableCollectionClusterForBranching) error {
 	if ctx.ResponseData.Header().Get("Content-Type") == "" {
-		ctx.ResponseData.Header().Set("Content-Type", "application/vnd.cluster-for-branching+json; type=collection")
-	}
-	if r == nil {
-		r = ClusterForBranchingCollection{}
+		ctx.ResponseData.Header().Set("Content-Type", "application/vnd.countable-collection-cluster-for-branching+json")
 	}
 	return ctx.ResponseData.Service.Send(ctx.Context, 200, r)
 }
@@ -508,16 +529,16 @@ func NewListRequestsClusterBranchingContext(ctx context.Context, r *http.Request
 	if len(paramFromTime) > 0 {
 		rawFromTime := paramFromTime[0]
 		if fromTime, err2 := strconv.Atoi(rawFromTime); err2 == nil {
-			tmp23 := fromTime
-			tmp22 := &tmp23
-			rctx.FromTime = tmp22
+			tmp26 := fromTime
+			tmp25 := &tmp26
+			rctx.FromTime = tmp25
 		} else {
 			err = goa.MergeErrors(err, goa.InvalidParamTypeError("from_time", rawFromTime, "integer"))
 		}
 	}
 	paramLimit := req.Params["limit"]
 	if len(paramLimit) == 0 {
-		rctx.Limit = 1000
+		rctx.Limit = 100
 	} else {
 		rawLimit := paramLimit[0]
 		if limit, err2 := strconv.Atoi(rawLimit); err2 == nil {
@@ -525,8 +546,8 @@ func NewListRequestsClusterBranchingContext(ctx context.Context, r *http.Request
 		} else {
 			err = goa.MergeErrors(err, goa.InvalidParamTypeError("limit", rawLimit, "integer"))
 		}
-		if rctx.Limit > 1000 {
-			err = goa.MergeErrors(err, goa.InvalidRangeError(`limit`, rctx.Limit, 1000, false))
+		if rctx.Limit > 100 {
+			err = goa.MergeErrors(err, goa.InvalidRangeError(`limit`, rctx.Limit, 100, false))
 		}
 	}
 	paramRequestor := req.Params["requestor"]
@@ -538,9 +559,9 @@ func NewListRequestsClusterBranchingContext(ctx context.Context, r *http.Request
 	if len(paramSkip) > 0 {
 		rawSkip := paramSkip[0]
 		if skip, err2 := strconv.Atoi(rawSkip); err2 == nil {
-			tmp26 := skip
-			tmp25 := &tmp26
-			rctx.Skip = tmp25
+			tmp29 := skip
+			tmp28 := &tmp29
+			rctx.Skip = tmp28
 		} else {
 			err = goa.MergeErrors(err, goa.InvalidParamTypeError("skip", rawSkip, "integer"))
 		}
@@ -559,9 +580,9 @@ func NewListRequestsClusterBranchingContext(ctx context.Context, r *http.Request
 	if len(paramToTime) > 0 {
 		rawToTime := paramToTime[0]
 		if toTime, err2 := strconv.Atoi(rawToTime); err2 == nil {
-			tmp28 := toTime
-			tmp27 := &tmp28
-			rctx.ToTime = tmp27
+			tmp31 := toTime
+			tmp30 := &tmp31
+			rctx.ToTime = tmp30
 		} else {
 			err = goa.MergeErrors(err, goa.InvalidParamTypeError("to_time", rawToTime, "integer"))
 		}
@@ -580,12 +601,9 @@ func NewListRequestsClusterBranchingContext(ctx context.Context, r *http.Request
 }
 
 // OK sends a HTTP response with status code 200.
-func (ctx *ListRequestsClusterBranchingContext) OK(r BranchRequestCollection) error {
+func (ctx *ListRequestsClusterBranchingContext) OK(r *CountableCollectionRequests) error {
 	if ctx.ResponseData.Header().Get("Content-Type") == "" {
-		ctx.ResponseData.Header().Set("Content-Type", "application/vnd.branch-request+json; type=collection")
-	}
-	if r == nil {
-		r = BranchRequestCollection{}
+		ctx.ResponseData.Header().Set("Content-Type", "application/vnd.countable-collection-requests+json")
 	}
 	return ctx.ResponseData.Service.Send(ctx.Context, 200, r)
 }
@@ -619,16 +637,16 @@ func NewListSnapshotBranchesClusterBranchingContext(ctx context.Context, r *http
 	if len(paramFromTime) > 0 {
 		rawFromTime := paramFromTime[0]
 		if fromTime, err2 := strconv.Atoi(rawFromTime); err2 == nil {
-			tmp30 := fromTime
-			tmp29 := &tmp30
-			rctx.FromTime = tmp29
+			tmp33 := fromTime
+			tmp32 := &tmp33
+			rctx.FromTime = tmp32
 		} else {
 			err = goa.MergeErrors(err, goa.InvalidParamTypeError("from_time", rawFromTime, "integer"))
 		}
 	}
 	paramLimit := req.Params["limit"]
 	if len(paramLimit) == 0 {
-		rctx.Limit = 1000
+		rctx.Limit = 100
 	} else {
 		rawLimit := paramLimit[0]
 		if limit, err2 := strconv.Atoi(rawLimit); err2 == nil {
@@ -636,8 +654,8 @@ func NewListSnapshotBranchesClusterBranchingContext(ctx context.Context, r *http
 		} else {
 			err = goa.MergeErrors(err, goa.InvalidParamTypeError("limit", rawLimit, "integer"))
 		}
-		if rctx.Limit > 1000 {
-			err = goa.MergeErrors(err, goa.InvalidRangeError(`limit`, rctx.Limit, 1000, false))
+		if rctx.Limit > 100 {
+			err = goa.MergeErrors(err, goa.InvalidRangeError(`limit`, rctx.Limit, 100, false))
 		}
 	}
 	paramRequestor := req.Params["requestor"]
@@ -649,9 +667,9 @@ func NewListSnapshotBranchesClusterBranchingContext(ctx context.Context, r *http
 	if len(paramSkip) > 0 {
 		rawSkip := paramSkip[0]
 		if skip, err2 := strconv.Atoi(rawSkip); err2 == nil {
-			tmp33 := skip
-			tmp32 := &tmp33
-			rctx.Skip = tmp32
+			tmp36 := skip
+			tmp35 := &tmp36
+			rctx.Skip = tmp35
 		} else {
 			err = goa.MergeErrors(err, goa.InvalidParamTypeError("skip", rawSkip, "integer"))
 		}
@@ -680,9 +698,9 @@ func NewListSnapshotBranchesClusterBranchingContext(ctx context.Context, r *http
 	if len(paramToTime) > 0 {
 		rawToTime := paramToTime[0]
 		if toTime, err2 := strconv.Atoi(rawToTime); err2 == nil {
-			tmp35 := toTime
-			tmp34 := &tmp35
-			rctx.ToTime = tmp34
+			tmp38 := toTime
+			tmp37 := &tmp38
+			rctx.ToTime = tmp37
 		} else {
 			err = goa.MergeErrors(err, goa.InvalidParamTypeError("to_time", rawToTime, "integer"))
 		}
@@ -701,12 +719,9 @@ func NewListSnapshotBranchesClusterBranchingContext(ctx context.Context, r *http
 }
 
 // OK sends a HTTP response with status code 200.
-func (ctx *ListSnapshotBranchesClusterBranchingContext) OK(r ClusterBranchCollection) error {
+func (ctx *ListSnapshotBranchesClusterBranchingContext) OK(r *CountableCollectionClusterBranches) error {
 	if ctx.ResponseData.Header().Get("Content-Type") == "" {
-		ctx.ResponseData.Header().Set("Content-Type", "application/vnd.cluster-branch+json; type=collection")
-	}
-	if r == nil {
-		r = ClusterBranchCollection{}
+		ctx.ResponseData.Header().Set("Content-Type", "application/vnd.countable-collection-cluster-branches+json")
 	}
 	return ctx.ResponseData.Service.Send(ctx.Context, 200, r)
 }
@@ -747,16 +762,16 @@ func NewListSnapshotsClusterBranchingContext(ctx context.Context, r *http.Reques
 	if len(paramFromTime) > 0 {
 		rawFromTime := paramFromTime[0]
 		if fromTime, err2 := strconv.Atoi(rawFromTime); err2 == nil {
-			tmp37 := fromTime
-			tmp36 := &tmp37
-			rctx.FromTime = tmp36
+			tmp40 := fromTime
+			tmp39 := &tmp40
+			rctx.FromTime = tmp39
 		} else {
 			err = goa.MergeErrors(err, goa.InvalidParamTypeError("from_time", rawFromTime, "integer"))
 		}
 	}
 	paramLimit := req.Params["limit"]
 	if len(paramLimit) == 0 {
-		rctx.Limit = 1000
+		rctx.Limit = 100
 	} else {
 		rawLimit := paramLimit[0]
 		if limit, err2 := strconv.Atoi(rawLimit); err2 == nil {
@@ -764,17 +779,17 @@ func NewListSnapshotsClusterBranchingContext(ctx context.Context, r *http.Reques
 		} else {
 			err = goa.MergeErrors(err, goa.InvalidParamTypeError("limit", rawLimit, "integer"))
 		}
-		if rctx.Limit > 1000 {
-			err = goa.MergeErrors(err, goa.InvalidRangeError(`limit`, rctx.Limit, 1000, false))
+		if rctx.Limit > 100 {
+			err = goa.MergeErrors(err, goa.InvalidRangeError(`limit`, rctx.Limit, 100, false))
 		}
 	}
 	paramSkip := req.Params["skip"]
 	if len(paramSkip) > 0 {
 		rawSkip := paramSkip[0]
 		if skip, err2 := strconv.Atoi(rawSkip); err2 == nil {
-			tmp40 := skip
-			tmp39 := &tmp40
-			rctx.Skip = tmp39
+			tmp43 := skip
+			tmp42 := &tmp43
+			rctx.Skip = tmp42
 		} else {
 			err = goa.MergeErrors(err, goa.InvalidParamTypeError("skip", rawSkip, "integer"))
 		}
@@ -783,9 +798,9 @@ func NewListSnapshotsClusterBranchingContext(ctx context.Context, r *http.Reques
 	if len(paramToTime) > 0 {
 		rawToTime := paramToTime[0]
 		if toTime, err2 := strconv.Atoi(rawToTime); err2 == nil {
-			tmp42 := toTime
-			tmp41 := &tmp42
-			rctx.ToTime = tmp41
+			tmp45 := toTime
+			tmp44 := &tmp45
+			rctx.ToTime = tmp44
 		} else {
 			err = goa.MergeErrors(err, goa.InvalidParamTypeError("to_time", rawToTime, "integer"))
 		}
@@ -794,12 +809,9 @@ func NewListSnapshotsClusterBranchingContext(ctx context.Context, r *http.Reques
 }
 
 // OK sends a HTTP response with status code 200.
-func (ctx *ListSnapshotsClusterBranchingContext) OK(r ClusterSnapshotCollection) error {
+func (ctx *ListSnapshotsClusterBranchingContext) OK(r *CountableCollectionClusterSnapshots) error {
 	if ctx.ResponseData.Header().Get("Content-Type") == "" {
-		ctx.ResponseData.Header().Set("Content-Type", "application/vnd.cluster-snapshot+json; type=collection")
-	}
-	if r == nil {
-		r = ClusterSnapshotCollection{}
+		ctx.ResponseData.Header().Set("Content-Type", "application/vnd.countable-collection-cluster-snapshots+json")
 	}
 	return ctx.ResponseData.Service.Send(ctx.Context, 200, r)
 }

@@ -240,8 +240,8 @@ func ListClustersClusterBranchingPath() string {
 }
 
 // Retrieve all Available cluster that can be branch.
-func (c *Client) ListClustersClusterBranching(ctx context.Context, path string, clusterType *string) (*http.Response, error) {
-	req, err := c.NewListClustersClusterBranchingRequest(ctx, path, clusterType)
+func (c *Client) ListClustersClusterBranching(ctx context.Context, path string, clusterName *string, clusterType *string, limit *int, skip *int) (*http.Response, error) {
+	req, err := c.NewListClustersClusterBranchingRequest(ctx, path, clusterName, clusterType, limit, skip)
 	if err != nil {
 		return nil, err
 	}
@@ -249,15 +249,26 @@ func (c *Client) ListClustersClusterBranching(ctx context.Context, path string, 
 }
 
 // NewListClustersClusterBranchingRequest create the request corresponding to the list-clusters action endpoint of the cluster-branching resource.
-func (c *Client) NewListClustersClusterBranchingRequest(ctx context.Context, path string, clusterType *string) (*http.Request, error) {
+func (c *Client) NewListClustersClusterBranchingRequest(ctx context.Context, path string, clusterName *string, clusterType *string, limit *int, skip *int) (*http.Request, error) {
 	scheme := c.Scheme
 	if scheme == "" {
 		scheme = "http"
 	}
 	u := url.URL{Host: c.Host, Scheme: scheme, Path: path}
 	values := u.Query()
+	if clusterName != nil {
+		values.Set("cluster_name", *clusterName)
+	}
 	if clusterType != nil {
 		values.Set("cluster_type", *clusterType)
+	}
+	if limit != nil {
+		tmp31 := strconv.Itoa(*limit)
+		values.Set("limit", tmp31)
+	}
+	if skip != nil {
+		tmp32 := strconv.Itoa(*skip)
+		values.Set("skip", tmp32)
 	}
 	u.RawQuery = values.Encode()
 	req, err := http.NewRequest("GET", u.String(), nil)
@@ -324,26 +335,26 @@ func (c *Client) NewListRequestsClusterBranchingRequest(ctx context.Context, pat
 		values.Set("cluster_name", *clusterName)
 	}
 	if fromTime != nil {
-		tmp31 := strconv.Itoa(*fromTime)
-		values.Set("from_time", tmp31)
+		tmp33 := strconv.Itoa(*fromTime)
+		values.Set("from_time", tmp33)
 	}
 	if limit != nil {
-		tmp32 := strconv.Itoa(*limit)
-		values.Set("limit", tmp32)
+		tmp34 := strconv.Itoa(*limit)
+		values.Set("limit", tmp34)
 	}
 	if requestor != nil {
 		values.Set("requestor", *requestor)
 	}
 	if skip != nil {
-		tmp33 := strconv.Itoa(*skip)
-		values.Set("skip", tmp33)
+		tmp35 := strconv.Itoa(*skip)
+		values.Set("skip", tmp35)
 	}
 	if state != nil {
 		values.Set("state", *state)
 	}
 	if toTime != nil {
-		tmp34 := strconv.Itoa(*toTime)
-		values.Set("to_time", tmp34)
+		tmp36 := strconv.Itoa(*toTime)
+		values.Set("to_time", tmp36)
 	}
 	if type_ != nil {
 		values.Set("type", *type_)
@@ -381,19 +392,19 @@ func (c *Client) NewListSnapshotBranchesClusterBranchingRequest(ctx context.Cont
 	u := url.URL{Host: c.Host, Scheme: scheme, Path: path}
 	values := u.Query()
 	if fromTime != nil {
-		tmp35 := strconv.Itoa(*fromTime)
-		values.Set("from_time", tmp35)
+		tmp37 := strconv.Itoa(*fromTime)
+		values.Set("from_time", tmp37)
 	}
 	if limit != nil {
-		tmp36 := strconv.Itoa(*limit)
-		values.Set("limit", tmp36)
+		tmp38 := strconv.Itoa(*limit)
+		values.Set("limit", tmp38)
 	}
 	if requestor != nil {
 		values.Set("requestor", *requestor)
 	}
 	if skip != nil {
-		tmp37 := strconv.Itoa(*skip)
-		values.Set("skip", tmp37)
+		tmp39 := strconv.Itoa(*skip)
+		values.Set("skip", tmp39)
 	}
 	if status != nil {
 		values.Set("status", *status)
@@ -402,8 +413,8 @@ func (c *Client) NewListSnapshotBranchesClusterBranchingRequest(ctx context.Cont
 		values.Set("team", *team)
 	}
 	if toTime != nil {
-		tmp38 := strconv.Itoa(*toTime)
-		values.Set("to_time", tmp38)
+		tmp40 := strconv.Itoa(*toTime)
+		values.Set("to_time", tmp40)
 	}
 	if type_ != nil {
 		values.Set("type", *type_)
@@ -443,20 +454,20 @@ func (c *Client) NewListSnapshotsClusterBranchingRequest(ctx context.Context, pa
 		values.Set("cluster_name", *clusterName)
 	}
 	if fromTime != nil {
-		tmp39 := strconv.Itoa(*fromTime)
-		values.Set("from_time", tmp39)
+		tmp41 := strconv.Itoa(*fromTime)
+		values.Set("from_time", tmp41)
 	}
 	if limit != nil {
-		tmp40 := strconv.Itoa(*limit)
-		values.Set("limit", tmp40)
+		tmp42 := strconv.Itoa(*limit)
+		values.Set("limit", tmp42)
 	}
 	if skip != nil {
-		tmp41 := strconv.Itoa(*skip)
-		values.Set("skip", tmp41)
+		tmp43 := strconv.Itoa(*skip)
+		values.Set("skip", tmp43)
 	}
 	if toTime != nil {
-		tmp42 := strconv.Itoa(*toTime)
-		values.Set("to_time", tmp42)
+		tmp44 := strconv.Itoa(*toTime)
+		values.Set("to_time", tmp44)
 	}
 	u.RawQuery = values.Encode()
 	req, err := http.NewRequest("GET", u.String(), nil)

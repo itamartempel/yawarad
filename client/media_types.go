@@ -364,3 +364,119 @@ func (c *Client) DecodeClusterSnapshotCollection(resp *http.Response) (ClusterSn
 	err := c.Decoder.Decode(&decoded, resp.Body, resp.Header.Get("Content-Type"))
 	return decoded, err
 }
+
+// Countable Collection of Clusters (default view)
+//
+// Identifier: application/vnd.countable-collection-cluster-branches+json; view=default
+type CountableCollectionClusterBranches struct {
+	// The slice of result from the result set
+	Branches ClusterBranchCollection `form:"branches,omitempty" json:"branches,omitempty" yaml:"branches,omitempty" xml:"branches,omitempty"`
+	// The total Count Of Results
+	Count *int `form:"count,omitempty" json:"count,omitempty" yaml:"count,omitempty" xml:"count,omitempty"`
+	// The limit of result from the total result set
+	Limit *int `form:"limit,omitempty" json:"limit,omitempty" yaml:"limit,omitempty" xml:"limit,omitempty"`
+	// The count of skiped results from the total result set
+	Skip *int `form:"skip,omitempty" json:"skip,omitempty" yaml:"skip,omitempty" xml:"skip,omitempty"`
+}
+
+// Validate validates the CountableCollectionClusterBranches media type instance.
+func (mt *CountableCollectionClusterBranches) Validate() (err error) {
+	if err2 := mt.Branches.Validate(); err2 != nil {
+		err = goa.MergeErrors(err, err2)
+	}
+	return
+}
+
+// DecodeCountableCollectionClusterBranches decodes the CountableCollectionClusterBranches instance encoded in resp body.
+func (c *Client) DecodeCountableCollectionClusterBranches(resp *http.Response) (*CountableCollectionClusterBranches, error) {
+	var decoded CountableCollectionClusterBranches
+	err := c.Decoder.Decode(&decoded, resp.Body, resp.Header.Get("Content-Type"))
+	return &decoded, err
+}
+
+// Countable Collection of Clusters (default view)
+//
+// Identifier: application/vnd.countable-collection-cluster-for-branching+json; view=default
+type CountableCollectionClusterForBranching struct {
+	// The slice of result from the result set
+	Clusters ClusterForBranchingCollection `form:"clusters,omitempty" json:"clusters,omitempty" yaml:"clusters,omitempty" xml:"clusters,omitempty"`
+	// The total Count Of Results
+	Count *int `form:"count,omitempty" json:"count,omitempty" yaml:"count,omitempty" xml:"count,omitempty"`
+	// The limit of result from the total result set
+	Limit *int `form:"limit,omitempty" json:"limit,omitempty" yaml:"limit,omitempty" xml:"limit,omitempty"`
+	// The count of skiped results from the total result set
+	Skip *int `form:"skip,omitempty" json:"skip,omitempty" yaml:"skip,omitempty" xml:"skip,omitempty"`
+}
+
+// Validate validates the CountableCollectionClusterForBranching media type instance.
+func (mt *CountableCollectionClusterForBranching) Validate() (err error) {
+	if err2 := mt.Clusters.Validate(); err2 != nil {
+		err = goa.MergeErrors(err, err2)
+	}
+	return
+}
+
+// DecodeCountableCollectionClusterForBranching decodes the CountableCollectionClusterForBranching instance encoded in resp body.
+func (c *Client) DecodeCountableCollectionClusterForBranching(resp *http.Response) (*CountableCollectionClusterForBranching, error) {
+	var decoded CountableCollectionClusterForBranching
+	err := c.Decoder.Decode(&decoded, resp.Body, resp.Header.Get("Content-Type"))
+	return &decoded, err
+}
+
+// Countable Collection of Clusters (default view)
+//
+// Identifier: application/vnd.countable-collection-cluster-snapshots+json; view=default
+type CountableCollectionClusterSnapshots struct {
+	// The total Count Of Results
+	Count *int `form:"count,omitempty" json:"count,omitempty" yaml:"count,omitempty" xml:"count,omitempty"`
+	// The limit of result from the total result set
+	Limit *int `form:"limit,omitempty" json:"limit,omitempty" yaml:"limit,omitempty" xml:"limit,omitempty"`
+	// The count of skiped results from the total result set
+	Skip *int `form:"skip,omitempty" json:"skip,omitempty" yaml:"skip,omitempty" xml:"skip,omitempty"`
+	// The slice of result from the result set
+	Snapshots ClusterSnapshotCollection `form:"snapshots,omitempty" json:"snapshots,omitempty" yaml:"snapshots,omitempty" xml:"snapshots,omitempty"`
+}
+
+// Validate validates the CountableCollectionClusterSnapshots media type instance.
+func (mt *CountableCollectionClusterSnapshots) Validate() (err error) {
+	if err2 := mt.Snapshots.Validate(); err2 != nil {
+		err = goa.MergeErrors(err, err2)
+	}
+	return
+}
+
+// DecodeCountableCollectionClusterSnapshots decodes the CountableCollectionClusterSnapshots instance encoded in resp body.
+func (c *Client) DecodeCountableCollectionClusterSnapshots(resp *http.Response) (*CountableCollectionClusterSnapshots, error) {
+	var decoded CountableCollectionClusterSnapshots
+	err := c.Decoder.Decode(&decoded, resp.Body, resp.Header.Get("Content-Type"))
+	return &decoded, err
+}
+
+// Countable Collection of Clusters (default view)
+//
+// Identifier: application/vnd.countable-collection-requests+json; view=default
+type CountableCollectionRequests struct {
+	// The total Count Of Results
+	Count *int `form:"count,omitempty" json:"count,omitempty" yaml:"count,omitempty" xml:"count,omitempty"`
+	// The limit of result from the total result set
+	Limit *int `form:"limit,omitempty" json:"limit,omitempty" yaml:"limit,omitempty" xml:"limit,omitempty"`
+	// The slice of result from the result set
+	Requests BranchRequestCollection `form:"requests,omitempty" json:"requests,omitempty" yaml:"requests,omitempty" xml:"requests,omitempty"`
+	// The count of skiped results from the total result set
+	Skip *int `form:"skip,omitempty" json:"skip,omitempty" yaml:"skip,omitempty" xml:"skip,omitempty"`
+}
+
+// Validate validates the CountableCollectionRequests media type instance.
+func (mt *CountableCollectionRequests) Validate() (err error) {
+	if err2 := mt.Requests.Validate(); err2 != nil {
+		err = goa.MergeErrors(err, err2)
+	}
+	return
+}
+
+// DecodeCountableCollectionRequests decodes the CountableCollectionRequests instance encoded in resp body.
+func (c *Client) DecodeCountableCollectionRequests(resp *http.Response) (*CountableCollectionRequests, error) {
+	var decoded CountableCollectionRequests
+	err := c.Decoder.Decode(&decoded, resp.Body, resp.Header.Get("Content-Type"))
+	return &decoded, err
+}

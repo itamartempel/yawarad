@@ -41,7 +41,7 @@ type (
 		ClusterName string
 		// Filter cluster branch by retriving all branch that was created after the giving value (Epoch time in milliseconds)
 		FromTime int
-		// limit the result set by giving value (default is 1000 )
+		// limit the result set by giving value (default is 100 )
 		Limit int
 		// Filter branches by username of the reuqstor(contains)
 		Requestor string
@@ -64,7 +64,7 @@ type (
 		ClusterName string
 		// Filter cluster branch by retriving all branch that was created after the giving value (Epoch time in milliseconds)
 		FromTime int
-		// limit the result set by giving value (default is 1000 )
+		// limit the result set by giving value (default is 100 )
 		Limit int
 		// Filter branches by username of the reuqstor(contains)
 		Requestor string
@@ -87,7 +87,7 @@ type (
 		ClusterName string
 		// Filter cluster snapshot by retriving all snapshot that was created after the giving value (Epoch time in milliseconds)
 		FromTime int
-		// limit the result set by giving value (default is 1000)
+		// limit the result set by giving value (default is 100)
 		Limit int
 		// For pagenation, skip results by giving value
 		Skip int
@@ -98,7 +98,13 @@ type (
 
 	// ListClustersClusterBranchingCommand is the command line data structure for the list-clusters action of cluster-branching
 	ListClustersClusterBranchingCommand struct {
+		// Filter by cluster name (contains)
+		ClusterName string
 		ClusterType string
+		// limit the result set by giving value (default is 100)
+		Limit int
+		// For pagenation, skip results by giving value
+		Skip        int
 		PrettyPrint bool
 	}
 
@@ -115,7 +121,7 @@ type (
 		ClusterName string
 		// Filter requests that was created after the giving value (Epoch time in milliseconds)
 		FromTime int
-		// limit the result set by giving value (default is 1000 )
+		// limit the result set by giving value (default is 100 )
 		Limit int
 		// Filter branches by username of the reuqstor(contains)
 		Requestor string
@@ -136,7 +142,7 @@ type (
 		SnapshotID string
 		// Filter cluster branch by retriving all branch that was created after the giving value (Epoch time in milliseconds)
 		FromTime int
-		// limit the result set by giving value (default is 1000 )
+		// limit the result set by giving value (default is 100 )
 		Limit int
 		// Filter branches by username of the reuqstor(contains)
 		Requestor string
@@ -159,7 +165,7 @@ type (
 		ClusterName string
 		// Filter cluster snapshot by retriving all snapshot that was created after the giving value (Epoch time in milliseconds)
 		FromTime int
-		// limit the result set by giving value (default is 1000)
+		// limit the result set by giving value (default is 100)
 		Limit int
 		// For pagenation, skip results by giving value
 		Skip int
@@ -258,7 +264,7 @@ Payload example:
    "requestor": "iisraelly@wix.com",
    "snapshot_id": "Image_4946347",
    "team": "Booking",
-   "type": "dev"
+   "type": "dr"
 }`,
 		RunE: func(cmd *cobra.Command, args []string) error { return tmp1.Run(c, args) },
 	}
@@ -503,7 +509,7 @@ Payload example:
 Payload example:
 
 {
-   "comment": "Eius ut nemo velit quia.",
+   "comment": "Quia necessitatibus.",
    "operation": "expire_now"
 }`,
 		RunE: func(cmd *cobra.Command, args []string) error { return tmp18.Run(c, args) },
@@ -726,7 +732,7 @@ func (cmd *ListBranchesClusterBranchingCommand) RegisterFlags(cc *cobra.Command,
 	cc.Flags().StringVar(&cmd.ClusterName, "cluster_name", clusterName, `Filter branch by cluster name (contains)`)
 	var fromTime int
 	cc.Flags().IntVar(&cmd.FromTime, "from_time", fromTime, `Filter cluster branch by retriving all branch that was created after the giving value (Epoch time in milliseconds)`)
-	cc.Flags().IntVar(&cmd.Limit, "limit", 1000, `limit the result set by giving value (default is 1000 )`)
+	cc.Flags().IntVar(&cmd.Limit, "limit", 100, `limit the result set by giving value (default is 100 )`)
 	var requestor string
 	cc.Flags().StringVar(&cmd.Requestor, "requestor", requestor, `Filter branches by username of the reuqstor(contains)`)
 	var skip int
@@ -767,7 +773,7 @@ func (cmd *ListClusterBranchesClusterBranchingCommand) RegisterFlags(cc *cobra.C
 	cc.Flags().StringVar(&cmd.ClusterName, "cluster_name", clusterName, `The cluster name to show`)
 	var fromTime int
 	cc.Flags().IntVar(&cmd.FromTime, "from_time", fromTime, `Filter cluster branch by retriving all branch that was created after the giving value (Epoch time in milliseconds)`)
-	cc.Flags().IntVar(&cmd.Limit, "limit", 1000, `limit the result set by giving value (default is 1000 )`)
+	cc.Flags().IntVar(&cmd.Limit, "limit", 100, `limit the result set by giving value (default is 100 )`)
 	var requestor string
 	cc.Flags().StringVar(&cmd.Requestor, "requestor", requestor, `Filter branches by username of the reuqstor(contains)`)
 	var skip int
@@ -808,7 +814,7 @@ func (cmd *ListClusterSnapshotsClusterBranchingCommand) RegisterFlags(cc *cobra.
 	cc.Flags().StringVar(&cmd.ClusterName, "cluster_name", clusterName, `The cluster name to show`)
 	var fromTime int
 	cc.Flags().IntVar(&cmd.FromTime, "from_time", fromTime, `Filter cluster snapshot by retriving all snapshot that was created after the giving value (Epoch time in milliseconds)`)
-	cc.Flags().IntVar(&cmd.Limit, "limit", 1000, `limit the result set by giving value (default is 1000)`)
+	cc.Flags().IntVar(&cmd.Limit, "limit", 100, `limit the result set by giving value (default is 100)`)
 	var skip int
 	cc.Flags().IntVar(&cmd.Skip, "skip", skip, `For pagenation, skip results by giving value`)
 	var toTime int
@@ -825,7 +831,7 @@ func (cmd *ListClustersClusterBranchingCommand) Run(c *client.Client, args []str
 	}
 	logger := goa.NewLogger(log.New(os.Stderr, "", log.LstdFlags))
 	ctx := goa.WithLogger(context.Background(), logger)
-	resp, err := c.ListClustersClusterBranching(ctx, path, stringFlagVal("cluster_type", cmd.ClusterType))
+	resp, err := c.ListClustersClusterBranching(ctx, path, stringFlagVal("cluster_name", cmd.ClusterName), stringFlagVal("cluster_type", cmd.ClusterType), intFlagVal("limit", cmd.Limit), intFlagVal("skip", cmd.Skip))
 	if err != nil {
 		goa.LogError(ctx, "failed", "err", err)
 		return err
@@ -837,8 +843,13 @@ func (cmd *ListClustersClusterBranchingCommand) Run(c *client.Client, args []str
 
 // RegisterFlags registers the command flags with the command line.
 func (cmd *ListClustersClusterBranchingCommand) RegisterFlags(cc *cobra.Command, c *client.Client) {
+	var clusterName string
+	cc.Flags().StringVar(&cmd.ClusterName, "cluster_name", clusterName, `Filter by cluster name (contains)`)
 	var clusterType string
 	cc.Flags().StringVar(&cmd.ClusterType, "cluster_type", clusterType, ``)
+	cc.Flags().IntVar(&cmd.Limit, "limit", 100, `limit the result set by giving value (default is 100)`)
+	var skip int
+	cc.Flags().IntVar(&cmd.Skip, "skip", skip, `For pagenation, skip results by giving value`)
 }
 
 // Run makes the HTTP request corresponding to the ListRequestTasksClusterBranchingCommand command.
@@ -893,7 +904,7 @@ func (cmd *ListRequestsClusterBranchingCommand) RegisterFlags(cc *cobra.Command,
 	cc.Flags().StringVar(&cmd.ClusterName, "cluster_name", clusterName, `Filter request by cluster name (contains)`)
 	var fromTime int
 	cc.Flags().IntVar(&cmd.FromTime, "from_time", fromTime, `Filter requests that was created after the giving value (Epoch time in milliseconds)`)
-	cc.Flags().IntVar(&cmd.Limit, "limit", 1000, `limit the result set by giving value (default is 1000 )`)
+	cc.Flags().IntVar(&cmd.Limit, "limit", 100, `limit the result set by giving value (default is 100 )`)
 	var requestor string
 	cc.Flags().StringVar(&cmd.Requestor, "requestor", requestor, `Filter branches by username of the reuqstor(contains)`)
 	var skip int
@@ -932,7 +943,7 @@ func (cmd *ListSnapshotBranchesClusterBranchingCommand) RegisterFlags(cc *cobra.
 	cc.Flags().StringVar(&cmd.SnapshotID, "snapshot_id", snapshotID, `The snapshot id to show`)
 	var fromTime int
 	cc.Flags().IntVar(&cmd.FromTime, "from_time", fromTime, `Filter cluster branch by retriving all branch that was created after the giving value (Epoch time in milliseconds)`)
-	cc.Flags().IntVar(&cmd.Limit, "limit", 1000, `limit the result set by giving value (default is 1000 )`)
+	cc.Flags().IntVar(&cmd.Limit, "limit", 100, `limit the result set by giving value (default is 100 )`)
 	var requestor string
 	cc.Flags().StringVar(&cmd.Requestor, "requestor", requestor, `Filter branches by username of the reuqstor(contains)`)
 	var skip int
@@ -973,7 +984,7 @@ func (cmd *ListSnapshotsClusterBranchingCommand) RegisterFlags(cc *cobra.Command
 	cc.Flags().StringVar(&cmd.ClusterName, "cluster_name", clusterName, `Filter by cluster name (contains)`)
 	var fromTime int
 	cc.Flags().IntVar(&cmd.FromTime, "from_time", fromTime, `Filter cluster snapshot by retriving all snapshot that was created after the giving value (Epoch time in milliseconds)`)
-	cc.Flags().IntVar(&cmd.Limit, "limit", 1000, `limit the result set by giving value (default is 1000)`)
+	cc.Flags().IntVar(&cmd.Limit, "limit", 100, `limit the result set by giving value (default is 100)`)
 	var skip int
 	cc.Flags().IntVar(&cmd.Skip, "skip", skip, `For pagenation, skip results by giving value`)
 	var toTime int

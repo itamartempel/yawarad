@@ -8,15 +8,15 @@ definitions:
   Branch-Request:
     description: A request (default view)
     example:
-      branch_id: efbc33e6-ce47-4777-8acf-048f8aec5c61
+      branch_id: 4d0d6d1a-2009-490b-8fce-8d5431993fd4
       jira_ticket: DBS-38329
-      request_id: 21759c00-370a-4db6-8793-6e5eaead825e
+      request_id: ecd37b21-367c-4675-833e-28d02578c788
       request_type: extend_expration
       requestor: iisraelly@wix.com
       tasks:
       - description: At earum et dolorem ut mollitia impedit.
         end_at: "2013-05-05T14:26:02Z"
-        id: 56cdf528-4812-4805-9419-6792c3100fe5
+        id: 2cf8a568-2f60-42e9-9a66-8065770d441a
         last_log_message: Reiciendis ut aliquid culpa.
         name: Distinctio architecto consequatur magnam repudiandae maxime error.
         progress: 91
@@ -25,7 +25,7 @@ definitions:
         state: pendding
       - description: At earum et dolorem ut mollitia impedit.
         end_at: "2013-05-05T14:26:02Z"
-        id: 56cdf528-4812-4805-9419-6792c3100fe5
+        id: 2cf8a568-2f60-42e9-9a66-8065770d441a
         last_log_message: Reiciendis ut aliquid culpa.
         name: Distinctio architecto consequatur magnam repudiandae maxime error.
         progress: 91
@@ -35,7 +35,7 @@ definitions:
     properties:
       branch_id:
         description: Branch id
-        example: efbc33e6-ce47-4777-8acf-048f8aec5c61
+        example: 4d0d6d1a-2009-490b-8fce-8d5431993fd4
         format: uuid
         type: string
       jira_ticket:
@@ -44,7 +44,7 @@ definitions:
         type: string
       request_id:
         description: Request Id
-        example: 21759c00-370a-4db6-8793-6e5eaead825e
+        example: ecd37b21-367c-4675-833e-28d02578c788
         format: uuid
         type: string
       request_type:
@@ -65,7 +65,7 @@ definitions:
         example:
         - description: At earum et dolorem ut mollitia impedit.
           end_at: "2013-05-05T14:26:02Z"
-          id: 56cdf528-4812-4805-9419-6792c3100fe5
+          id: 2cf8a568-2f60-42e9-9a66-8065770d441a
           last_log_message: Reiciendis ut aliquid culpa.
           name: Distinctio architecto consequatur magnam repudiandae maxime error.
           progress: 91
@@ -74,7 +74,7 @@ definitions:
           state: pendding
         - description: At earum et dolorem ut mollitia impedit.
           end_at: "2013-05-05T14:26:02Z"
-          id: 56cdf528-4812-4805-9419-6792c3100fe5
+          id: 2cf8a568-2f60-42e9-9a66-8065770d441a
           last_log_message: Reiciendis ut aliquid culpa.
           name: Distinctio architecto consequatur magnam repudiandae maxime error.
           progress: 91
@@ -91,7 +91,7 @@ definitions:
     example:
       description: At earum et dolorem ut mollitia impedit.
       end_at: "2013-05-05T14:26:02Z"
-      id: 56cdf528-4812-4805-9419-6792c3100fe5
+      id: 2cf8a568-2f60-42e9-9a66-8065770d441a
       last_log_message: Reiciendis ut aliquid culpa.
       name: Distinctio architecto consequatur magnam repudiandae maxime error.
       progress: 91
@@ -110,7 +110,7 @@ definitions:
         type: string
       id:
         description: Request task Id
-        example: 56cdf528-4812-4805-9419-6792c3100fe5
+        example: 2cf8a568-2f60-42e9-9a66-8065770d441a
         format: uuid
         type: string
       last_log_message:
@@ -156,7 +156,7 @@ definitions:
     example:
     - description: At earum et dolorem ut mollitia impedit.
       end_at: "2013-05-05T14:26:02Z"
-      id: 56cdf528-4812-4805-9419-6792c3100fe5
+      id: 2cf8a568-2f60-42e9-9a66-8065770d441a
       last_log_message: Reiciendis ut aliquid culpa.
       name: Distinctio architecto consequatur magnam repudiandae maxime error.
       progress: 91
@@ -165,7 +165,7 @@ definitions:
       state: pendding
     - description: At earum et dolorem ut mollitia impedit.
       end_at: "2013-05-05T14:26:02Z"
-      id: 56cdf528-4812-4805-9419-6792c3100fe5
+      id: 2cf8a568-2f60-42e9-9a66-8065770d441a
       last_log_message: Reiciendis ut aliquid culpa.
       name: Distinctio architecto consequatur magnam repudiandae maxime error.
       progress: 91
@@ -181,15 +181,15 @@ definitions:
     description: Branch-RequestCollection is the media type for an array of Branch-Request
       (default view)
     example:
-    - branch_id: efbc33e6-ce47-4777-8acf-048f8aec5c61
+    - branch_id: 4d0d6d1a-2009-490b-8fce-8d5431993fd4
       jira_ticket: DBS-38329
-      request_id: 21759c00-370a-4db6-8793-6e5eaead825e
+      request_id: ecd37b21-367c-4675-833e-28d02578c788
       request_type: extend_expration
       requestor: iisraelly@wix.com
       tasks:
       - description: At earum et dolorem ut mollitia impedit.
         end_at: "2013-05-05T14:26:02Z"
-        id: 56cdf528-4812-4805-9419-6792c3100fe5
+        id: 2cf8a568-2f60-42e9-9a66-8065770d441a
         last_log_message: Reiciendis ut aliquid culpa.
         name: Distinctio architecto consequatur magnam repudiandae maxime error.
         progress: 91
@@ -198,22 +198,22 @@ definitions:
         state: pendding
       - description: At earum et dolorem ut mollitia impedit.
         end_at: "2013-05-05T14:26:02Z"
-        id: 56cdf528-4812-4805-9419-6792c3100fe5
+        id: 2cf8a568-2f60-42e9-9a66-8065770d441a
         last_log_message: Reiciendis ut aliquid culpa.
         name: Distinctio architecto consequatur magnam repudiandae maxime error.
         progress: 91
         seq: 1696058868987927013
         start_at: "1972-07-17T06:33:44Z"
         state: pendding
-    - branch_id: efbc33e6-ce47-4777-8acf-048f8aec5c61
+    - branch_id: 4d0d6d1a-2009-490b-8fce-8d5431993fd4
       jira_ticket: DBS-38329
-      request_id: 21759c00-370a-4db6-8793-6e5eaead825e
+      request_id: ecd37b21-367c-4675-833e-28d02578c788
       request_type: extend_expration
       requestor: iisraelly@wix.com
       tasks:
       - description: At earum et dolorem ut mollitia impedit.
         end_at: "2013-05-05T14:26:02Z"
-        id: 56cdf528-4812-4805-9419-6792c3100fe5
+        id: 2cf8a568-2f60-42e9-9a66-8065770d441a
         last_log_message: Reiciendis ut aliquid culpa.
         name: Distinctio architecto consequatur magnam repudiandae maxime error.
         progress: 91
@@ -222,31 +222,7 @@ definitions:
         state: pendding
       - description: At earum et dolorem ut mollitia impedit.
         end_at: "2013-05-05T14:26:02Z"
-        id: 56cdf528-4812-4805-9419-6792c3100fe5
-        last_log_message: Reiciendis ut aliquid culpa.
-        name: Distinctio architecto consequatur magnam repudiandae maxime error.
-        progress: 91
-        seq: 1696058868987927013
-        start_at: "1972-07-17T06:33:44Z"
-        state: pendding
-    - branch_id: efbc33e6-ce47-4777-8acf-048f8aec5c61
-      jira_ticket: DBS-38329
-      request_id: 21759c00-370a-4db6-8793-6e5eaead825e
-      request_type: extend_expration
-      requestor: iisraelly@wix.com
-      tasks:
-      - description: At earum et dolorem ut mollitia impedit.
-        end_at: "2013-05-05T14:26:02Z"
-        id: 56cdf528-4812-4805-9419-6792c3100fe5
-        last_log_message: Reiciendis ut aliquid culpa.
-        name: Distinctio architecto consequatur magnam repudiandae maxime error.
-        progress: 91
-        seq: 1696058868987927013
-        start_at: "1972-07-17T06:33:44Z"
-        state: pendding
-      - description: At earum et dolorem ut mollitia impedit.
-        end_at: "2013-05-05T14:26:02Z"
-        id: 56cdf528-4812-4805-9419-6792c3100fe5
+        id: 2cf8a568-2f60-42e9-9a66-8065770d441a
         last_log_message: Reiciendis ut aliquid culpa.
         name: Distinctio architecto consequatur magnam repudiandae maxime error.
         progress: 91
@@ -264,7 +240,7 @@ definitions:
       cluster_name: my_cluster
       created_at: "2010-03-21T03:32:39Z"
       expire_at: "2014-06-01T11:43:01Z"
-      id: d28cebfe-0faa-4c36-b0a2-fd1b1dace173
+      id: 8b78c99c-da2b-4428-afea-029152b25c8c
       rollforword_till: "2008-01-14T09:10:38Z"
       snapshot:
         class: OnVault
@@ -293,7 +269,7 @@ definitions:
         type: string
       id:
         description: Branch id
-        example: d28cebfe-0faa-4c36-b0a2-fd1b1dace173
+        example: 8b78c99c-da2b-4428-afea-029152b25c8c
         format: uuid
         type: string
       rollforword_till:
@@ -334,7 +310,7 @@ definitions:
     - cluster_name: my_cluster
       created_at: "2010-03-21T03:32:39Z"
       expire_at: "2014-06-01T11:43:01Z"
-      id: d28cebfe-0faa-4c36-b0a2-fd1b1dace173
+      id: 8b78c99c-da2b-4428-afea-029152b25c8c
       rollforword_till: "2008-01-14T09:10:38Z"
       snapshot:
         class: OnVault
@@ -349,7 +325,7 @@ definitions:
     - cluster_name: my_cluster
       created_at: "2010-03-21T03:32:39Z"
       expire_at: "2014-06-01T11:43:01Z"
-      id: d28cebfe-0faa-4c36-b0a2-fd1b1dace173
+      id: 8b78c99c-da2b-4428-afea-029152b25c8c
       rollforword_till: "2008-01-14T09:10:38Z"
       snapshot:
         class: OnVault
@@ -364,7 +340,7 @@ definitions:
     - cluster_name: my_cluster
       created_at: "2010-03-21T03:32:39Z"
       expire_at: "2014-06-01T11:43:01Z"
-      id: d28cebfe-0faa-4c36-b0a2-fd1b1dace173
+      id: 8b78c99c-da2b-4428-afea-029152b25c8c
       rollforword_till: "2008-01-14T09:10:38Z"
       snapshot:
         class: OnVault
@@ -387,7 +363,7 @@ definitions:
     example:
       cluster_type: mysql
       count_of_active_branches: 3
-      id: 2710efa2-58b5-49ad-bace-f017ff1754e7
+      id: 0e375c66-5b05-4d60-a4a2-2b24cfb72cc5
       latest_snapshot_id: Image_4946347
       master_hostname: db-mysql-my-cluster0a.42.wixprod.net
       name: my_cluster
@@ -424,7 +400,7 @@ definitions:
         type: integer
       id:
         description: Uniq Id from Shapherd
-        example: 2710efa2-58b5-49ad-bace-f017ff1754e7
+        example: 0e375c66-5b05-4d60-a4a2-2b24cfb72cc5
         format: uuid
         type: string
       latest_snapshot_id:
@@ -448,7 +424,7 @@ definitions:
         - db-mysql-my-cluster0a.96.wixprod.net
         - db-mysql-my-cluster1b.96.wixprod.net
         items:
-          example: wuckert.info.name
+          example: bednar.name.net
           format: hostname
           type: string
         type: array
@@ -462,7 +438,7 @@ definitions:
     example:
     - cluster_type: mysql
       count_of_active_branches: 3
-      id: 2710efa2-58b5-49ad-bace-f017ff1754e7
+      id: 0e375c66-5b05-4d60-a4a2-2b24cfb72cc5
       latest_snapshot_id: Image_4946347
       master_hostname: db-mysql-my-cluster0a.42.wixprod.net
       name: my_cluster
@@ -486,7 +462,7 @@ definitions:
         rollforword_till: "1977-04-09T00:50:17Z"
     - cluster_type: mysql
       count_of_active_branches: 3
-      id: 2710efa2-58b5-49ad-bace-f017ff1754e7
+      id: 0e375c66-5b05-4d60-a4a2-2b24cfb72cc5
       latest_snapshot_id: Image_4946347
       master_hostname: db-mysql-my-cluster0a.42.wixprod.net
       name: my_cluster
@@ -510,7 +486,7 @@ definitions:
         rollforword_till: "1977-04-09T00:50:17Z"
     - cluster_type: mysql
       count_of_active_branches: 3
-      id: 2710efa2-58b5-49ad-bace-f017ff1754e7
+      id: 0e375c66-5b05-4d60-a4a2-2b24cfb72cc5
       latest_snapshot_id: Image_4946347
       master_hostname: db-mysql-my-cluster0a.42.wixprod.net
       name: my_cluster
@@ -607,6 +583,313 @@ definitions:
     title: 'Mediatype identifier: application/vnd.cluster-snapshot+json; type=collection;
       view=default'
     type: array
+  Countable-Collection-Cluster-Branches:
+    description: Countable Collection of Clusters (default view)
+    example:
+      branches:
+      - cluster_name: my_cluster
+        created_at: "2010-03-21T03:32:39Z"
+        expire_at: "2014-06-01T11:43:01Z"
+        id: 8b78c99c-da2b-4428-afea-029152b25c8c
+        rollforword_till: "2008-01-14T09:10:38Z"
+        snapshot:
+          class: OnVault
+          cluster_name: my_cluster
+          created_at: "1988-07-14T08:46:52Z"
+          id: Image_4946347
+          image_size_mb: 95367.4
+          rollforword_till: "1977-04-09T00:50:17Z"
+        status: grace
+        team: Booking
+        type: dev
+      - cluster_name: my_cluster
+        created_at: "2010-03-21T03:32:39Z"
+        expire_at: "2014-06-01T11:43:01Z"
+        id: 8b78c99c-da2b-4428-afea-029152b25c8c
+        rollforword_till: "2008-01-14T09:10:38Z"
+        snapshot:
+          class: OnVault
+          cluster_name: my_cluster
+          created_at: "1988-07-14T08:46:52Z"
+          id: Image_4946347
+          image_size_mb: 95367.4
+          rollforword_till: "1977-04-09T00:50:17Z"
+        status: grace
+        team: Booking
+        type: dev
+      - cluster_name: my_cluster
+        created_at: "2010-03-21T03:32:39Z"
+        expire_at: "2014-06-01T11:43:01Z"
+        id: 8b78c99c-da2b-4428-afea-029152b25c8c
+        rollforword_till: "2008-01-14T09:10:38Z"
+        snapshot:
+          class: OnVault
+          cluster_name: my_cluster
+          created_at: "1988-07-14T08:46:52Z"
+          id: Image_4946347
+          image_size_mb: 95367.4
+          rollforword_till: "1977-04-09T00:50:17Z"
+        status: grace
+        team: Booking
+        type: dev
+      count: 798
+      limit: 100
+      skip: 0
+    properties:
+      branches:
+        $ref: '#/definitions/Cluster-BranchCollection'
+      count:
+        description: The total Count Of Results
+        example: 798
+        format: int64
+        type: integer
+      limit:
+        description: The limit of result from the total result set
+        example: 100
+        format: int64
+        type: integer
+      skip:
+        description: The count of skiped results from the total result set
+        example: 0
+        format: int64
+        type: integer
+    title: 'Mediatype identifier: application/vnd.countable-collection-cluster-branches+json;
+      view=default'
+    type: object
+  Countable-Collection-Cluster-For-Branching:
+    description: Countable Collection of Clusters (default view)
+    example:
+      clusters:
+      - cluster_type: mysql
+        count_of_active_branches: 3
+        id: 0e375c66-5b05-4d60-a4a2-2b24cfb72cc5
+        latest_snapshot_id: Image_4946347
+        master_hostname: db-mysql-my-cluster0a.42.wixprod.net
+        name: my_cluster
+        servers:
+        - db-mysql-my-cluster0a.42.wixprod.net
+        - db-mysql-my-cluster1b.42.wixprod.net
+        - db-mysql-my-cluster0a.96.wixprod.net
+        - db-mysql-my-cluster1b.96.wixprod.net
+        top_ten_latest_snapshots:
+        - class: OnVault
+          cluster_name: my_cluster
+          created_at: "1988-07-14T08:46:52Z"
+          id: Image_4946347
+          image_size_mb: 95367.4
+          rollforword_till: "1977-04-09T00:50:17Z"
+        - class: OnVault
+          cluster_name: my_cluster
+          created_at: "1988-07-14T08:46:52Z"
+          id: Image_4946347
+          image_size_mb: 95367.4
+          rollforword_till: "1977-04-09T00:50:17Z"
+      - cluster_type: mysql
+        count_of_active_branches: 3
+        id: 0e375c66-5b05-4d60-a4a2-2b24cfb72cc5
+        latest_snapshot_id: Image_4946347
+        master_hostname: db-mysql-my-cluster0a.42.wixprod.net
+        name: my_cluster
+        servers:
+        - db-mysql-my-cluster0a.42.wixprod.net
+        - db-mysql-my-cluster1b.42.wixprod.net
+        - db-mysql-my-cluster0a.96.wixprod.net
+        - db-mysql-my-cluster1b.96.wixprod.net
+        top_ten_latest_snapshots:
+        - class: OnVault
+          cluster_name: my_cluster
+          created_at: "1988-07-14T08:46:52Z"
+          id: Image_4946347
+          image_size_mb: 95367.4
+          rollforword_till: "1977-04-09T00:50:17Z"
+        - class: OnVault
+          cluster_name: my_cluster
+          created_at: "1988-07-14T08:46:52Z"
+          id: Image_4946347
+          image_size_mb: 95367.4
+          rollforword_till: "1977-04-09T00:50:17Z"
+      - cluster_type: mysql
+        count_of_active_branches: 3
+        id: 0e375c66-5b05-4d60-a4a2-2b24cfb72cc5
+        latest_snapshot_id: Image_4946347
+        master_hostname: db-mysql-my-cluster0a.42.wixprod.net
+        name: my_cluster
+        servers:
+        - db-mysql-my-cluster0a.42.wixprod.net
+        - db-mysql-my-cluster1b.42.wixprod.net
+        - db-mysql-my-cluster0a.96.wixprod.net
+        - db-mysql-my-cluster1b.96.wixprod.net
+        top_ten_latest_snapshots:
+        - class: OnVault
+          cluster_name: my_cluster
+          created_at: "1988-07-14T08:46:52Z"
+          id: Image_4946347
+          image_size_mb: 95367.4
+          rollforword_till: "1977-04-09T00:50:17Z"
+        - class: OnVault
+          cluster_name: my_cluster
+          created_at: "1988-07-14T08:46:52Z"
+          id: Image_4946347
+          image_size_mb: 95367.4
+          rollforword_till: "1977-04-09T00:50:17Z"
+      count: 606
+      limit: 100
+      skip: 0
+    properties:
+      clusters:
+        $ref: '#/definitions/Cluster-For-BranchingCollection'
+      count:
+        description: The total Count Of Results
+        example: 606
+        format: int64
+        type: integer
+      limit:
+        description: The limit of result from the total result set
+        example: 100
+        format: int64
+        type: integer
+      skip:
+        description: The count of skiped results from the total result set
+        example: 0
+        format: int64
+        type: integer
+    title: 'Mediatype identifier: application/vnd.countable-collection-cluster-for-branching+json;
+      view=default'
+    type: object
+  Countable-Collection-Cluster-Snapshots:
+    description: Countable Collection of Clusters (default view)
+    example:
+      count: 1029
+      limit: 100
+      skip: 0
+      snapshots:
+      - class: OnVault
+        cluster_name: my_cluster
+        created_at: "1988-07-14T08:46:52Z"
+        id: Image_4946347
+        image_size_mb: 95367.4
+        rollforword_till: "1977-04-09T00:50:17Z"
+    properties:
+      count:
+        description: The total Count Of Results
+        example: 1029
+        format: int64
+        type: integer
+      limit:
+        description: The limit of result from the total result set
+        example: 100
+        format: int64
+        type: integer
+      skip:
+        description: The count of skiped results from the total result set
+        example: 0
+        format: int64
+        type: integer
+      snapshots:
+        $ref: '#/definitions/Cluster-SnapshotCollection'
+    title: 'Mediatype identifier: application/vnd.countable-collection-cluster-snapshots+json;
+      view=default'
+    type: object
+  Countable-Collection-Requests:
+    description: Countable Collection of Clusters (default view)
+    example:
+      count: 4321
+      limit: 100
+      requests:
+      - branch_id: 4d0d6d1a-2009-490b-8fce-8d5431993fd4
+        jira_ticket: DBS-38329
+        request_id: ecd37b21-367c-4675-833e-28d02578c788
+        request_type: extend_expration
+        requestor: iisraelly@wix.com
+        tasks:
+        - description: At earum et dolorem ut mollitia impedit.
+          end_at: "2013-05-05T14:26:02Z"
+          id: 2cf8a568-2f60-42e9-9a66-8065770d441a
+          last_log_message: Reiciendis ut aliquid culpa.
+          name: Distinctio architecto consequatur magnam repudiandae maxime error.
+          progress: 91
+          seq: 1696058868987927013
+          start_at: "1972-07-17T06:33:44Z"
+          state: pendding
+        - description: At earum et dolorem ut mollitia impedit.
+          end_at: "2013-05-05T14:26:02Z"
+          id: 2cf8a568-2f60-42e9-9a66-8065770d441a
+          last_log_message: Reiciendis ut aliquid culpa.
+          name: Distinctio architecto consequatur magnam repudiandae maxime error.
+          progress: 91
+          seq: 1696058868987927013
+          start_at: "1972-07-17T06:33:44Z"
+          state: pendding
+      - branch_id: 4d0d6d1a-2009-490b-8fce-8d5431993fd4
+        jira_ticket: DBS-38329
+        request_id: ecd37b21-367c-4675-833e-28d02578c788
+        request_type: extend_expration
+        requestor: iisraelly@wix.com
+        tasks:
+        - description: At earum et dolorem ut mollitia impedit.
+          end_at: "2013-05-05T14:26:02Z"
+          id: 2cf8a568-2f60-42e9-9a66-8065770d441a
+          last_log_message: Reiciendis ut aliquid culpa.
+          name: Distinctio architecto consequatur magnam repudiandae maxime error.
+          progress: 91
+          seq: 1696058868987927013
+          start_at: "1972-07-17T06:33:44Z"
+          state: pendding
+        - description: At earum et dolorem ut mollitia impedit.
+          end_at: "2013-05-05T14:26:02Z"
+          id: 2cf8a568-2f60-42e9-9a66-8065770d441a
+          last_log_message: Reiciendis ut aliquid culpa.
+          name: Distinctio architecto consequatur magnam repudiandae maxime error.
+          progress: 91
+          seq: 1696058868987927013
+          start_at: "1972-07-17T06:33:44Z"
+          state: pendding
+      - branch_id: 4d0d6d1a-2009-490b-8fce-8d5431993fd4
+        jira_ticket: DBS-38329
+        request_id: ecd37b21-367c-4675-833e-28d02578c788
+        request_type: extend_expration
+        requestor: iisraelly@wix.com
+        tasks:
+        - description: At earum et dolorem ut mollitia impedit.
+          end_at: "2013-05-05T14:26:02Z"
+          id: 2cf8a568-2f60-42e9-9a66-8065770d441a
+          last_log_message: Reiciendis ut aliquid culpa.
+          name: Distinctio architecto consequatur magnam repudiandae maxime error.
+          progress: 91
+          seq: 1696058868987927013
+          start_at: "1972-07-17T06:33:44Z"
+          state: pendding
+        - description: At earum et dolorem ut mollitia impedit.
+          end_at: "2013-05-05T14:26:02Z"
+          id: 2cf8a568-2f60-42e9-9a66-8065770d441a
+          last_log_message: Reiciendis ut aliquid culpa.
+          name: Distinctio architecto consequatur magnam repudiandae maxime error.
+          progress: 91
+          seq: 1696058868987927013
+          start_at: "1972-07-17T06:33:44Z"
+          state: pendding
+      skip: 0
+    properties:
+      count:
+        description: The total Count Of Results
+        example: 4321
+        format: int64
+        type: integer
+      limit:
+        description: The limit of result from the total result set
+        example: 100
+        format: int64
+        type: integer
+      requests:
+        $ref: '#/definitions/Branch-RequestCollection'
+      skip:
+        description: The count of skiped results from the total result set
+        example: 0
+        format: int64
+        type: integer
+    title: 'Mediatype identifier: application/vnd.countable-collection-requests+json;
+      view=default'
+    type: object
   CreateBranchPayload:
     description: CreateBranchPayload defind a new branch request
     example:
@@ -614,7 +897,7 @@ definitions:
       requestor: iisraelly@wix.com
       snapshot_id: Image_4946347
       team: Booking
-      type: dev
+      type: dr
     properties:
       cluster_name:
         description: Cluster name that the branch will created from
@@ -638,7 +921,7 @@ definitions:
         enum:
         - dev
         - dr
-        example: dev
+        example: dr
         type: string
     required:
     - snapshot_id
@@ -651,12 +934,12 @@ definitions:
   UpdateBranchPayload:
     description: UpdateBranchPayload defind an update request on existing branch
     example:
-      comment: Eius ut nemo velit quia.
+      comment: Quia necessitatibus.
       operation: expire_now
     properties:
       comment:
         description: Comment of this operation
-        example: Eius ut nemo velit quia.
+        example: Quia necessitatibus.
         type: string
       operation:
         description: The operation to be done on the existing branch
@@ -675,15 +958,76 @@ info:
   title: YAWARAD API for the lazy DBA
   version: ""
 paths:
-  /v1/cluster-branching/branches:
+  /v1/cluster-branching/clusters:
     get:
-      description: Retrive branches
-      operationId: cluster-branching#list-branches
+      description: Retrieve all Available cluster that can be branch.
+      operationId: cluster-branching#list-clusters
       parameters:
-      - description: Filter branch by cluster name (contains)
+      - description: Filter by cluster name (contains)
         in: query
         name: cluster_name
         required: false
+        type: string
+      - enum:
+        - mysql
+        - mongodb
+        in: query
+        name: cluster_type
+        required: false
+        type: string
+      - default: 100
+        description: limit the result set by giving value (default is 100)
+        in: query
+        maximum: 100
+        name: limit
+        required: false
+        type: integer
+      - description: For pagenation, skip results by giving value
+        in: query
+        name: skip
+        required: false
+        type: integer
+      produces:
+      - application/vnd.countable-collection-cluster-for-branching+json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Countable-Collection-Cluster-For-Branching'
+      summary: list-clusters cluster-branching
+      tags:
+      - cluster-branching
+  /v1/cluster-branching/clusters/{cluster_name}:
+    get:
+      description: Retrieve single cluster to be branch by name.
+      operationId: cluster-branching#show-cluster
+      parameters:
+      - description: The cluster name to show
+        in: path
+        name: cluster_name
+        required: true
+        type: string
+      produces:
+      - application/vnd.cluster-for-branching+json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Cluster-For-Branching'
+        "404":
+          description: If cluster name does not exists
+      summary: show-cluster cluster-branching
+      tags:
+      - cluster-branching
+  /v1/cluster-branching/clusters/{cluster_name}/branches:
+    get:
+      description: Retrive branches of a specific cluster
+      operationId: cluster-branching#list-cluster-branches
+      parameters:
+      - description: The cluster name to show
+        in: path
+        name: cluster_name
+        required: true
         type: string
       - description: Filter cluster branch by retriving all branch that was created
           after the giving value (Epoch time in milliseconds)
@@ -691,10 +1035,10 @@ paths:
         name: from_time
         required: false
         type: integer
-      - default: 1000
-        description: limit the result set by giving value (default is 1000 )
+      - default: 100
+        description: limit the result set by giving value (default is 100 )
         in: query
-        maximum: 1000
+        maximum: 100
         name: limit
         required: false
         type: integer
@@ -740,12 +1084,276 @@ paths:
         required: false
         type: string
       produces:
-      - application/vnd.cluster-branch+json; type=collection
+      - application/vnd.countable-collection-cluster-branches+json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/Cluster-BranchCollection'
+            $ref: '#/definitions/Countable-Collection-Cluster-Branches'
+        "404":
+          description: If cluster name does not exists
+      summary: list-cluster-branches cluster-branching
+      tags:
+      - cluster-branching
+  /v1/cluster-branching/clusters/{cluster_name}/snapshots:
+    get:
+      description: Retrive snapshots of a specific cluster
+      operationId: cluster-branching#list-cluster-snapshots
+      parameters:
+      - description: The cluster name to show
+        in: path
+        name: cluster_name
+        required: true
+        type: string
+      - description: Filter cluster snapshot by retriving all snapshot that was created
+          after the giving value (Epoch time in milliseconds)
+        in: query
+        name: from_time
+        required: false
+        type: integer
+      - default: 100
+        description: limit the result set by giving value (default is 100)
+        in: query
+        maximum: 100
+        name: limit
+        required: false
+        type: integer
+      - description: For pagenation, skip results by giving value
+        in: query
+        name: skip
+        required: false
+        type: integer
+      - description: Filter cluster snapshot by retriving all snapshot that was created
+          before the giving value (Epoch time in milliseconds)
+        in: query
+        name: to_time
+        required: false
+        type: integer
+      produces:
+      - application/vnd.countable-collection-cluster-snapshots+json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Countable-Collection-Cluster-Snapshots'
+        "404":
+          description: If cluster name does not exists
+      summary: list-cluster-snapshots cluster-branching
+      tags:
+      - cluster-branching
+  /v1/cluster-branching/snapshots:
+    get:
+      description: Retrive snapshots
+      operationId: cluster-branching#list-snapshots
+      parameters:
+      - description: Filter by cluster name (contains)
+        in: query
+        name: cluster_name
+        required: false
+        type: string
+      - description: Filter cluster snapshot by retriving all snapshot that was created
+          after the giving value (Epoch time in milliseconds)
+        in: query
+        name: from_time
+        required: false
+        type: integer
+      - default: 100
+        description: limit the result set by giving value (default is 100)
+        in: query
+        maximum: 100
+        name: limit
+        required: false
+        type: integer
+      - description: For pagenation, skip results by giving value
+        in: query
+        name: skip
+        required: false
+        type: integer
+      - description: Filter cluster snapshot by retriving all snapshot that was created
+          before the giving value (Epoch time in milliseconds)
+        in: query
+        name: to_time
+        required: false
+        type: integer
+      produces:
+      - application/vnd.countable-collection-cluster-snapshots+json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Countable-Collection-Cluster-Snapshots'
+      summary: list-snapshots cluster-branching
+      tags:
+      - cluster-branching
+  /v1/cluster-branching/snapshots/{snapshot_id}:
+    get:
+      description: Retrieve single cluster snapshot by id.
+      operationId: cluster-branching#show-snapshot
+      parameters:
+      - description: The snapshot id to show
+        in: path
+        name: snapshot_id
+        required: true
+        type: string
+      produces:
+      - application/vnd.cluster-for-branching+json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Cluster-For-Branching'
+        "404":
+          description: If snapshot id does not exists
+      summary: show-snapshot cluster-branching
+      tags:
+      - cluster-branching
+  /v1/cluster-branching/snapshots/{snapshot_id}/branches:
+    get:
+      description: Retrive branches that was created from a specific snapshot
+      operationId: cluster-branching#list-snapshot-branches
+      parameters:
+      - description: Filter cluster branch by retriving all branch that was created
+          after the giving value (Epoch time in milliseconds)
+        in: query
+        name: from_time
+        required: false
+        type: integer
+      - default: 100
+        description: limit the result set by giving value (default is 100 )
+        in: query
+        maximum: 100
+        name: limit
+        required: false
+        type: integer
+      - description: Filter branches by username of the reuqstor(contains)
+        in: query
+        name: requestor
+        required: false
+        type: string
+      - description: For pagenation, skip results by giving value
+        in: query
+        name: skip
+        required: false
+        type: integer
+      - description: The snapshot id to show
+        in: path
+        name: snapshot_id
+        required: true
+        type: string
+      - description: Filter branches by branch status
+        enum:
+        - creating
+        - updateing
+        - active
+        - grace
+        - expired
+        - deleted
+        in: query
+        name: status
+        required: false
+        type: string
+      - description: Filter branches by team name (contains)
+        in: query
+        name: team
+        required: false
+        type: string
+      - description: Filter cluster branch by retriving all branch that was created
+          before the giving value (Epoch time in milliseconds)
+        in: query
+        name: to_time
+        required: false
+        type: integer
+      - description: Filter branches by branch type
+        enum:
+        - dev
+        - dr
+        in: query
+        name: type
+        required: false
+        type: string
+      produces:
+      - application/vnd.countable-collection-cluster-branches+json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Countable-Collection-Cluster-Branches'
+        "404":
+          description: If snapshot id does not exists
+      summary: list-snapshot-branches cluster-branching
+      tags:
+      - cluster-branching
+  /v1/cluster-branching/branches:
+    get:
+      description: Retrive branches
+      operationId: cluster-branching#list-branches
+      parameters:
+      - description: Filter branch by cluster name (contains)
+        in: query
+        name: cluster_name
+        required: false
+        type: string
+      - description: Filter cluster branch by retriving all branch that was created
+          after the giving value (Epoch time in milliseconds)
+        in: query
+        name: from_time
+        required: false
+        type: integer
+      - default: 100
+        description: limit the result set by giving value (default is 100 )
+        in: query
+        maximum: 100
+        name: limit
+        required: false
+        type: integer
+      - description: Filter branches by username of the reuqstor(contains)
+        in: query
+        name: requestor
+        required: false
+        type: string
+      - description: For pagenation, skip results by giving value
+        in: query
+        name: skip
+        required: false
+        type: integer
+      - description: Filter branches by branch status
+        enum:
+        - creating
+        - updateing
+        - active
+        - grace
+        - expired
+        - deleted
+        in: query
+        name: status
+        required: false
+        type: string
+      - description: Filter branches by team name (contains)
+        in: query
+        name: team
+        required: false
+        type: string
+      - description: Filter cluster branch by retriving all branch that was created
+          before the giving value (Epoch time in milliseconds)
+        in: query
+        name: to_time
+        required: false
+        type: integer
+      - description: Filter branches by branch type
+        enum:
+        - dev
+        - dr
+        in: query
+        name: type
+        required: false
+        type: string
+      produces:
+      - application/vnd.countable-collection-cluster-branches+json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Countable-Collection-Cluster-Branches'
       summary: list-branches cluster-branching
       tags:
       - cluster-branching
@@ -819,172 +1427,6 @@ paths:
       summary: show-branche cluster-branching
       tags:
       - cluster-branching
-  /v1/cluster-branching/clusters:
-    get:
-      description: Retrieve all Available cluster that can be branch.
-      operationId: cluster-branching#list-clusters
-      parameters:
-      - enum:
-        - mysql
-        - mongodb
-        in: query
-        name: cluster_type
-        required: false
-        type: string
-      produces:
-      - application/vnd.cluster-for-branching+json; type=collection
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/Cluster-For-BranchingCollection'
-      summary: list-clusters cluster-branching
-      tags:
-      - cluster-branching
-  /v1/cluster-branching/clusters/{cluster_name}:
-    get:
-      description: Retrieve single cluster to be branch by name.
-      operationId: cluster-branching#show-cluster
-      parameters:
-      - description: The cluster name to show
-        in: path
-        name: cluster_name
-        required: true
-        type: string
-      produces:
-      - application/vnd.cluster-for-branching+json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/Cluster-For-Branching'
-        "404":
-          description: If cluster name does not exists
-      summary: show-cluster cluster-branching
-      tags:
-      - cluster-branching
-  /v1/cluster-branching/clusters/{cluster_name}/branches:
-    get:
-      description: Retrive branches of a specific cluster
-      operationId: cluster-branching#list-cluster-branches
-      parameters:
-      - description: The cluster name to show
-        in: path
-        name: cluster_name
-        required: true
-        type: string
-      - description: Filter cluster branch by retriving all branch that was created
-          after the giving value (Epoch time in milliseconds)
-        in: query
-        name: from_time
-        required: false
-        type: integer
-      - default: 1000
-        description: limit the result set by giving value (default is 1000 )
-        in: query
-        maximum: 1000
-        name: limit
-        required: false
-        type: integer
-      - description: Filter branches by username of the reuqstor(contains)
-        in: query
-        name: requestor
-        required: false
-        type: string
-      - description: For pagenation, skip results by giving value
-        in: query
-        name: skip
-        required: false
-        type: integer
-      - description: Filter branches by branch status
-        enum:
-        - creating
-        - updateing
-        - active
-        - grace
-        - expired
-        - deleted
-        in: query
-        name: status
-        required: false
-        type: string
-      - description: Filter branches by team name (contains)
-        in: query
-        name: team
-        required: false
-        type: string
-      - description: Filter cluster branch by retriving all branch that was created
-          before the giving value (Epoch time in milliseconds)
-        in: query
-        name: to_time
-        required: false
-        type: integer
-      - description: Filter branches by branch type
-        enum:
-        - dev
-        - dr
-        in: query
-        name: type
-        required: false
-        type: string
-      produces:
-      - application/vnd.cluster-branch+json; type=collection
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/Cluster-BranchCollection'
-        "404":
-          description: If cluster name does not exists
-      summary: list-cluster-branches cluster-branching
-      tags:
-      - cluster-branching
-  /v1/cluster-branching/clusters/{cluster_name}/snapshots:
-    get:
-      description: Retrive snapshots of a specific cluster
-      operationId: cluster-branching#list-cluster-snapshots
-      parameters:
-      - description: The cluster name to show
-        in: path
-        name: cluster_name
-        required: true
-        type: string
-      - description: Filter cluster snapshot by retriving all snapshot that was created
-          after the giving value (Epoch time in milliseconds)
-        in: query
-        name: from_time
-        required: false
-        type: integer
-      - default: 1000
-        description: limit the result set by giving value (default is 1000)
-        in: query
-        maximum: 1000
-        name: limit
-        required: false
-        type: integer
-      - description: For pagenation, skip results by giving value
-        in: query
-        name: skip
-        required: false
-        type: integer
-      - description: Filter cluster snapshot by retriving all snapshot that was created
-          before the giving value (Epoch time in milliseconds)
-        in: query
-        name: to_time
-        required: false
-        type: integer
-      produces:
-      - application/vnd.cluster-snapshot+json; type=collection
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/Cluster-SnapshotCollection'
-        "404":
-          description: If cluster name does not exists
-      summary: list-cluster-snapshots cluster-branching
-      tags:
-      - cluster-branching
   /v1/cluster-branching/requests:
     get:
       description: Retrive requests
@@ -1001,10 +1443,10 @@ paths:
         name: from_time
         required: false
         type: integer
-      - default: 1000
-        description: limit the result set by giving value (default is 1000 )
+      - default: 100
+        description: limit the result set by giving value (default is 100 )
         in: query
-        maximum: 1000
+        maximum: 100
         name: limit
         required: false
         type: integer
@@ -1044,12 +1486,12 @@ paths:
         required: false
         type: string
       produces:
-      - application/vnd.branch-request+json; type=collection
+      - application/vnd.countable-collection-requests+json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/Branch-RequestCollection'
+            $ref: '#/definitions/Countable-Collection-Requests'
       summary: list-requests cluster-branching
       tags:
       - cluster-branching
@@ -1185,148 +1627,6 @@ paths:
       schemes:
       - ws
       summary: subscribe-request-changes cluster-branching
-      tags:
-      - cluster-branching
-  /v1/cluster-branching/snapshots:
-    get:
-      description: Retrive snapshots
-      operationId: cluster-branching#list-snapshots
-      parameters:
-      - description: Filter by cluster name (contains)
-        in: query
-        name: cluster_name
-        required: false
-        type: string
-      - description: Filter cluster snapshot by retriving all snapshot that was created
-          after the giving value (Epoch time in milliseconds)
-        in: query
-        name: from_time
-        required: false
-        type: integer
-      - default: 1000
-        description: limit the result set by giving value (default is 1000)
-        in: query
-        maximum: 1000
-        name: limit
-        required: false
-        type: integer
-      - description: For pagenation, skip results by giving value
-        in: query
-        name: skip
-        required: false
-        type: integer
-      - description: Filter cluster snapshot by retriving all snapshot that was created
-          before the giving value (Epoch time in milliseconds)
-        in: query
-        name: to_time
-        required: false
-        type: integer
-      produces:
-      - application/vnd.cluster-snapshot+json; type=collection
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/Cluster-SnapshotCollection'
-      summary: list-snapshots cluster-branching
-      tags:
-      - cluster-branching
-  /v1/cluster-branching/snapshots/{snapshot_id}:
-    get:
-      description: Retrieve single cluster snapshot by id.
-      operationId: cluster-branching#show-snapshot
-      parameters:
-      - description: The snapshot id to show
-        in: path
-        name: snapshot_id
-        required: true
-        type: string
-      produces:
-      - application/vnd.cluster-for-branching+json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/Cluster-For-Branching'
-        "404":
-          description: If snapshot id does not exists
-      summary: show-snapshot cluster-branching
-      tags:
-      - cluster-branching
-  /v1/cluster-branching/snapshots/{snapshot_id}/branches:
-    get:
-      description: Retrive branches that was created from a specific snapshot
-      operationId: cluster-branching#list-snapshot-branches
-      parameters:
-      - description: Filter cluster branch by retriving all branch that was created
-          after the giving value (Epoch time in milliseconds)
-        in: query
-        name: from_time
-        required: false
-        type: integer
-      - default: 1000
-        description: limit the result set by giving value (default is 1000 )
-        in: query
-        maximum: 1000
-        name: limit
-        required: false
-        type: integer
-      - description: Filter branches by username of the reuqstor(contains)
-        in: query
-        name: requestor
-        required: false
-        type: string
-      - description: For pagenation, skip results by giving value
-        in: query
-        name: skip
-        required: false
-        type: integer
-      - description: The snapshot id to show
-        in: path
-        name: snapshot_id
-        required: true
-        type: string
-      - description: Filter branches by branch status
-        enum:
-        - creating
-        - updateing
-        - active
-        - grace
-        - expired
-        - deleted
-        in: query
-        name: status
-        required: false
-        type: string
-      - description: Filter branches by team name (contains)
-        in: query
-        name: team
-        required: false
-        type: string
-      - description: Filter cluster branch by retriving all branch that was created
-          before the giving value (Epoch time in milliseconds)
-        in: query
-        name: to_time
-        required: false
-        type: integer
-      - description: Filter branches by branch type
-        enum:
-        - dev
-        - dr
-        in: query
-        name: type
-        required: false
-        type: string
-      produces:
-      - application/vnd.cluster-branch+json; type=collection
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/Cluster-BranchCollection'
-        "404":
-          description: If snapshot id does not exists
-      summary: list-snapshot-branches cluster-branching
       tags:
       - cluster-branching
 produces:

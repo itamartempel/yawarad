@@ -258,7 +258,7 @@ func CreateBranchClusterBranchingUnprocessableEntity(t goatest.TInterface, ctx c
 // It returns the response writer so it's possible to inspect the response headers and the media type struct written to the response.
 // If ctx is nil then context.Background() is used.
 // If service is nil then a default service is created.
-func ListBranchesClusterBranchingOK(t goatest.TInterface, ctx context.Context, service *goa.Service, ctrl app.ClusterBranchingController, clusterName *string, fromTime *int, limit int, requestor *string, skip *int, status *string, team *string, toTime *int, type_ *string) (http.ResponseWriter, app.ClusterBranchCollection) {
+func ListBranchesClusterBranchingOK(t goatest.TInterface, ctx context.Context, service *goa.Service, ctrl app.ClusterBranchingController, clusterName *string, fromTime *int, limit int, requestor *string, skip *int, status *string, team *string, toTime *int, type_ *string) (http.ResponseWriter, *app.CountableCollectionClusterBranches) {
 	// Setup service
 	var (
 		logBuf bytes.Buffer
@@ -384,12 +384,12 @@ func ListBranchesClusterBranchingOK(t goatest.TInterface, ctx context.Context, s
 	if rw.Code != 200 {
 		t.Errorf("invalid response status code: got %+v, expected 200", rw.Code)
 	}
-	var mt app.ClusterBranchCollection
+	var mt *app.CountableCollectionClusterBranches
 	if resp != nil {
 		var _ok bool
-		mt, _ok = resp.(app.ClusterBranchCollection)
+		mt, _ok = resp.(*app.CountableCollectionClusterBranches)
 		if !_ok {
-			t.Fatalf("invalid response media: got variable of type %T, value %+v, expected instance of app.ClusterBranchCollection", resp, resp)
+			t.Fatalf("invalid response media: got variable of type %T, value %+v, expected instance of app.CountableCollectionClusterBranches", resp, resp)
 		}
 		_err = mt.Validate()
 		if _err != nil {
@@ -532,7 +532,7 @@ func ListClusterBranchesClusterBranchingNotFound(t goatest.TInterface, ctx conte
 // It returns the response writer so it's possible to inspect the response headers and the media type struct written to the response.
 // If ctx is nil then context.Background() is used.
 // If service is nil then a default service is created.
-func ListClusterBranchesClusterBranchingOK(t goatest.TInterface, ctx context.Context, service *goa.Service, ctrl app.ClusterBranchingController, clusterName string, fromTime *int, limit int, requestor *string, skip *int, status *string, team *string, toTime *int, type_ *string) (http.ResponseWriter, app.ClusterBranchCollection) {
+func ListClusterBranchesClusterBranchingOK(t goatest.TInterface, ctx context.Context, service *goa.Service, ctrl app.ClusterBranchingController, clusterName string, fromTime *int, limit int, requestor *string, skip *int, status *string, team *string, toTime *int, type_ *string) (http.ResponseWriter, *app.CountableCollectionClusterBranches) {
 	// Setup service
 	var (
 		logBuf bytes.Buffer
@@ -651,12 +651,12 @@ func ListClusterBranchesClusterBranchingOK(t goatest.TInterface, ctx context.Con
 	if rw.Code != 200 {
 		t.Errorf("invalid response status code: got %+v, expected 200", rw.Code)
 	}
-	var mt app.ClusterBranchCollection
+	var mt *app.CountableCollectionClusterBranches
 	if resp != nil {
 		var _ok bool
-		mt, _ok = resp.(app.ClusterBranchCollection)
+		mt, _ok = resp.(*app.CountableCollectionClusterBranches)
 		if !_ok {
-			t.Fatalf("invalid response media: got variable of type %T, value %+v, expected instance of app.ClusterBranchCollection", resp, resp)
+			t.Fatalf("invalid response media: got variable of type %T, value %+v, expected instance of app.CountableCollectionClusterBranches", resp, resp)
 		}
 		_err = mt.Validate()
 		if _err != nil {
@@ -767,7 +767,7 @@ func ListClusterSnapshotsClusterBranchingNotFound(t goatest.TInterface, ctx cont
 // It returns the response writer so it's possible to inspect the response headers and the media type struct written to the response.
 // If ctx is nil then context.Background() is used.
 // If service is nil then a default service is created.
-func ListClusterSnapshotsClusterBranchingOK(t goatest.TInterface, ctx context.Context, service *goa.Service, ctrl app.ClusterBranchingController, clusterName string, fromTime *int, limit int, skip *int, toTime *int) (http.ResponseWriter, app.ClusterSnapshotCollection) {
+func ListClusterSnapshotsClusterBranchingOK(t goatest.TInterface, ctx context.Context, service *goa.Service, ctrl app.ClusterBranchingController, clusterName string, fromTime *int, limit int, skip *int, toTime *int) (http.ResponseWriter, *app.CountableCollectionClusterSnapshots) {
 	// Setup service
 	var (
 		logBuf bytes.Buffer
@@ -854,12 +854,12 @@ func ListClusterSnapshotsClusterBranchingOK(t goatest.TInterface, ctx context.Co
 	if rw.Code != 200 {
 		t.Errorf("invalid response status code: got %+v, expected 200", rw.Code)
 	}
-	var mt app.ClusterSnapshotCollection
+	var mt *app.CountableCollectionClusterSnapshots
 	if resp != nil {
 		var _ok bool
-		mt, _ok = resp.(app.ClusterSnapshotCollection)
+		mt, _ok = resp.(*app.CountableCollectionClusterSnapshots)
 		if !_ok {
-			t.Fatalf("invalid response media: got variable of type %T, value %+v, expected instance of app.ClusterSnapshotCollection", resp, resp)
+			t.Fatalf("invalid response media: got variable of type %T, value %+v, expected instance of app.CountableCollectionClusterSnapshots", resp, resp)
 		}
 		_err = mt.Validate()
 		if _err != nil {
@@ -875,7 +875,7 @@ func ListClusterSnapshotsClusterBranchingOK(t goatest.TInterface, ctx context.Co
 // It returns the response writer so it's possible to inspect the response headers and the media type struct written to the response.
 // If ctx is nil then context.Background() is used.
 // If service is nil then a default service is created.
-func ListClustersClusterBranchingOK(t goatest.TInterface, ctx context.Context, service *goa.Service, ctrl app.ClusterBranchingController, clusterType *string) (http.ResponseWriter, app.ClusterForBranchingCollection) {
+func ListClustersClusterBranchingOK(t goatest.TInterface, ctx context.Context, service *goa.Service, ctrl app.ClusterBranchingController, clusterName *string, clusterType *string, limit int, skip *int) (http.ResponseWriter, *app.CountableCollectionClusterForBranching) {
 	// Setup service
 	var (
 		logBuf bytes.Buffer
@@ -896,9 +896,21 @@ func ListClustersClusterBranchingOK(t goatest.TInterface, ctx context.Context, s
 	// Setup request context
 	rw := httptest.NewRecorder()
 	query := url.Values{}
+	if clusterName != nil {
+		sliceVal := []string{*clusterName}
+		query["cluster_name"] = sliceVal
+	}
 	if clusterType != nil {
 		sliceVal := []string{*clusterType}
 		query["cluster_type"] = sliceVal
+	}
+	{
+		sliceVal := []string{strconv.Itoa(limit)}
+		query["limit"] = sliceVal
+	}
+	if skip != nil {
+		sliceVal := []string{strconv.Itoa(*skip)}
+		query["skip"] = sliceVal
 	}
 	u := &url.URL{
 		Path:     fmt.Sprintf("/api/v1/cluster-branching/clusters"),
@@ -909,9 +921,21 @@ func ListClustersClusterBranchingOK(t goatest.TInterface, ctx context.Context, s
 		panic("invalid test " + err.Error()) // bug
 	}
 	prms := url.Values{}
+	if clusterName != nil {
+		sliceVal := []string{*clusterName}
+		prms["cluster_name"] = sliceVal
+	}
 	if clusterType != nil {
 		sliceVal := []string{*clusterType}
 		prms["cluster_type"] = sliceVal
+	}
+	{
+		sliceVal := []string{strconv.Itoa(limit)}
+		prms["limit"] = sliceVal
+	}
+	if skip != nil {
+		sliceVal := []string{strconv.Itoa(*skip)}
+		prms["skip"] = sliceVal
 	}
 	if ctx == nil {
 		ctx = context.Background()
@@ -937,12 +961,12 @@ func ListClustersClusterBranchingOK(t goatest.TInterface, ctx context.Context, s
 	if rw.Code != 200 {
 		t.Errorf("invalid response status code: got %+v, expected 200", rw.Code)
 	}
-	var mt app.ClusterForBranchingCollection
+	var mt *app.CountableCollectionClusterForBranching
 	if resp != nil {
 		var _ok bool
-		mt, _ok = resp.(app.ClusterForBranchingCollection)
+		mt, _ok = resp.(*app.CountableCollectionClusterForBranching)
 		if !_ok {
-			t.Fatalf("invalid response media: got variable of type %T, value %+v, expected instance of app.ClusterForBranchingCollection", resp, resp)
+			t.Fatalf("invalid response media: got variable of type %T, value %+v, expected instance of app.CountableCollectionClusterForBranching", resp, resp)
 		}
 		_err = mt.Validate()
 		if _err != nil {
@@ -1032,7 +1056,7 @@ func ListRequestTasksClusterBranchingOK(t goatest.TInterface, ctx context.Contex
 // It returns the response writer so it's possible to inspect the response headers and the media type struct written to the response.
 // If ctx is nil then context.Background() is used.
 // If service is nil then a default service is created.
-func ListRequestsClusterBranchingOK(t goatest.TInterface, ctx context.Context, service *goa.Service, ctrl app.ClusterBranchingController, clusterName *string, fromTime *int, limit int, requestor *string, skip *int, state *string, toTime *int, type_ *string) (http.ResponseWriter, app.BranchRequestCollection) {
+func ListRequestsClusterBranchingOK(t goatest.TInterface, ctx context.Context, service *goa.Service, ctrl app.ClusterBranchingController, clusterName *string, fromTime *int, limit int, requestor *string, skip *int, state *string, toTime *int, type_ *string) (http.ResponseWriter, *app.CountableCollectionRequests) {
 	// Setup service
 	var (
 		logBuf bytes.Buffer
@@ -1150,12 +1174,12 @@ func ListRequestsClusterBranchingOK(t goatest.TInterface, ctx context.Context, s
 	if rw.Code != 200 {
 		t.Errorf("invalid response status code: got %+v, expected 200", rw.Code)
 	}
-	var mt app.BranchRequestCollection
+	var mt *app.CountableCollectionRequests
 	if resp != nil {
 		var _ok bool
-		mt, _ok = resp.(app.BranchRequestCollection)
+		mt, _ok = resp.(*app.CountableCollectionRequests)
 		if !_ok {
-			t.Fatalf("invalid response media: got variable of type %T, value %+v, expected instance of app.BranchRequestCollection", resp, resp)
+			t.Fatalf("invalid response media: got variable of type %T, value %+v, expected instance of app.CountableCollectionRequests", resp, resp)
 		}
 		_err = mt.Validate()
 		if _err != nil {
@@ -1298,7 +1322,7 @@ func ListSnapshotBranchesClusterBranchingNotFound(t goatest.TInterface, ctx cont
 // It returns the response writer so it's possible to inspect the response headers and the media type struct written to the response.
 // If ctx is nil then context.Background() is used.
 // If service is nil then a default service is created.
-func ListSnapshotBranchesClusterBranchingOK(t goatest.TInterface, ctx context.Context, service *goa.Service, ctrl app.ClusterBranchingController, snapshotID string, fromTime *int, limit int, requestor *string, skip *int, status *string, team *string, toTime *int, type_ *string) (http.ResponseWriter, app.ClusterBranchCollection) {
+func ListSnapshotBranchesClusterBranchingOK(t goatest.TInterface, ctx context.Context, service *goa.Service, ctrl app.ClusterBranchingController, snapshotID string, fromTime *int, limit int, requestor *string, skip *int, status *string, team *string, toTime *int, type_ *string) (http.ResponseWriter, *app.CountableCollectionClusterBranches) {
 	// Setup service
 	var (
 		logBuf bytes.Buffer
@@ -1417,12 +1441,12 @@ func ListSnapshotBranchesClusterBranchingOK(t goatest.TInterface, ctx context.Co
 	if rw.Code != 200 {
 		t.Errorf("invalid response status code: got %+v, expected 200", rw.Code)
 	}
-	var mt app.ClusterBranchCollection
+	var mt *app.CountableCollectionClusterBranches
 	if resp != nil {
 		var _ok bool
-		mt, _ok = resp.(app.ClusterBranchCollection)
+		mt, _ok = resp.(*app.CountableCollectionClusterBranches)
 		if !_ok {
-			t.Fatalf("invalid response media: got variable of type %T, value %+v, expected instance of app.ClusterBranchCollection", resp, resp)
+			t.Fatalf("invalid response media: got variable of type %T, value %+v, expected instance of app.CountableCollectionClusterBranches", resp, resp)
 		}
 		_err = mt.Validate()
 		if _err != nil {
@@ -1438,7 +1462,7 @@ func ListSnapshotBranchesClusterBranchingOK(t goatest.TInterface, ctx context.Co
 // It returns the response writer so it's possible to inspect the response headers and the media type struct written to the response.
 // If ctx is nil then context.Background() is used.
 // If service is nil then a default service is created.
-func ListSnapshotsClusterBranchingOK(t goatest.TInterface, ctx context.Context, service *goa.Service, ctrl app.ClusterBranchingController, clusterName *string, fromTime *int, limit int, skip *int, toTime *int) (http.ResponseWriter, app.ClusterSnapshotCollection) {
+func ListSnapshotsClusterBranchingOK(t goatest.TInterface, ctx context.Context, service *goa.Service, ctrl app.ClusterBranchingController, clusterName *string, fromTime *int, limit int, skip *int, toTime *int) (http.ResponseWriter, *app.CountableCollectionClusterSnapshots) {
 	// Setup service
 	var (
 		logBuf bytes.Buffer
@@ -1532,12 +1556,12 @@ func ListSnapshotsClusterBranchingOK(t goatest.TInterface, ctx context.Context, 
 	if rw.Code != 200 {
 		t.Errorf("invalid response status code: got %+v, expected 200", rw.Code)
 	}
-	var mt app.ClusterSnapshotCollection
+	var mt *app.CountableCollectionClusterSnapshots
 	if resp != nil {
 		var _ok bool
-		mt, _ok = resp.(app.ClusterSnapshotCollection)
+		mt, _ok = resp.(*app.CountableCollectionClusterSnapshots)
 		if !_ok {
-			t.Fatalf("invalid response media: got variable of type %T, value %+v, expected instance of app.ClusterSnapshotCollection", resp, resp)
+			t.Fatalf("invalid response media: got variable of type %T, value %+v, expected instance of app.CountableCollectionClusterSnapshots", resp, resp)
 		}
 		_err = mt.Validate()
 		if _err != nil {
