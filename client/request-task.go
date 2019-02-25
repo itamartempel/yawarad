@@ -118,7 +118,7 @@ func StreamLogRequestTaskPath(requestID string, taskName string) string {
 	return fmt.Sprintf("/api/v1/cluster-branching/requests/%s/tasks/%s/log/ws", param0, param1)
 }
 
-// Retrive a single request task by id
+// Stream the task log
 func (c *Client) StreamLogRequestTask(ctx context.Context, path string) (*websocket.Conn, error) {
 	scheme := c.Scheme
 	if scheme == "" {

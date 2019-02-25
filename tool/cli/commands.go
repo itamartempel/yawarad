@@ -415,7 +415,7 @@ Payload example:
 	app.AddCommand(command)
 	command = &cobra.Command{
 		Use:   "stream-log",
-		Short: `Retrive a single request task by id`,
+		Short: `Stream the task log`,
 	}
 	tmp16 := new(StreamLogRequestTaskCommand)
 	sub = &cobra.Command{

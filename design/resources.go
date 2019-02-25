@@ -740,7 +740,7 @@ var _ = Resource("request-task", func() {
 			Param("task_name", String, "The request task name to show")
 		})
 		Scheme("ws")
-		Description("Retrive a single request task by id")
+		Description("Stream the task log")
 		Response(SwitchingProtocols)
 	})
 })
