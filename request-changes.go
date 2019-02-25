@@ -1,10 +1,13 @@
 package main
 
 import (
+	"fmt"
+	"io"
+	"time"
+
 	"github.com/goadesign/goa"
 	"github.com/itamartempel/yawarad/app"
 	"golang.org/x/net/websocket"
-	"io"
 )
 
 // RequestChangesController implements the request-changes resource.
@@ -31,6 +34,15 @@ func (c *RequestChangesController) SubscribeWSHandler(ctx *app.SubscribeRequestC
 		// Put your logic here
 
 		ws.Write([]byte("subscribe request-changes"))
+
+		go func(ws *websocket.Conn) {
+			for i := 0; i < 20; i++ {
+				time.Sleep(1 * time.Second)
+				msg := fmt.Sprintf("[%v] [INFO] - bla bla", time.Now())
+				ws.Write([]byte(msg))
+			}
+		}(ws)
+
 		// Dummy echo websocket server
 		io.Copy(ws, ws)
 		// RequestChangesController_Subscribe: end_implement
